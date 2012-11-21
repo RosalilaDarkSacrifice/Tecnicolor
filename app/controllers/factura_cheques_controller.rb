@@ -51,7 +51,7 @@ class FacturaChequesController < ApplicationController
 
 				$producto_global.each do |p_cheque|
 					p_cheque.factura_cheque_id=@factura_cheque.id
-				  	p_cheque.save
+				  p_cheque.save
 
 					p=p_cheque.producto
 					p.existencias-=p_cheque.cantidad
