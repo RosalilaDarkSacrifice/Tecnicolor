@@ -169,4 +169,8 @@ class ReportesController < ApplicationController
 			@ventas.push(venta)
 		end
 	end
+
+	def todos_los_productos
+		@productos=Producto.all
+	end
 end

@@ -1,4 +1,60 @@
-<h1>Listado de productos</h1>
+<h1>Buscador de productos</h1>
+
+
+<%= form_tag buscar_producto_inventario_path,remote: true do%>
+<table>
+  <tr>
+    <td>
+      <b>Nombre:</b>
+    </td>
+    <td>
+      <%= text_field_tag :nombre, params[:nombre] %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Descripcion:</b>
+    </td>
+    <td>
+      <%= text_field_tag :descripcion, params[:descripcion] %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <b>Categoria:</b>
+    </td>
+    <td>
+			<%= collection_select(:categoria,@asdf, Categorium.all, :id, :nombre,{ :include_blank => true }) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <b>Marca:</b>
+    </td>
+    <td>
+			<%= collection_select(:marca,@asdf, Marca.all, :id, :nombre,{ :include_blank => true }) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= submit_tag "Buscar" %>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+<%end%>
+
+<table id="resultados_tabla">
+
+</table>
+
+
+<!--
+
 
 <table>
   <tr>
@@ -27,6 +83,7 @@
   </tr>
 <% end %>
 </table>
+-->
 
 <br />
 

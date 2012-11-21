@@ -64,11 +64,14 @@ Tecnicolor::Application.routes.draw do
   get "/consultar_factura" => "reportes#consultar_factura", :as => "consultar_factura"
   get "/cuentas_por_cobrar" => "reportes#cuentas_por_cobrar", :as => "cuentas_por_cobrar"
   get "/existencias_inventario" => "reportes#existencias_inventario", :as => "existencias_inventario"
+  get "/todos_los_productos" => "reportes#todos_los_productos", :as => "todos_los_productos"
 
   post "buscar_factura" => "reportes#buscar_factura", :as => :buscar_factura
 
   post "buscar_producto_transferencia" => "transferencia_interna_productos#buscar_producto_transferencia", :as => :buscar_producto_transferencia
   post "buscar_producto_salida" => "salida_producto_mal_estados#buscar_producto_salida", :as => :buscar_producto_salida
+
+	post "buscar_producto_inventario" => "productos#buscar_producto_inventario", :as => :buscar_producto_inventario
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

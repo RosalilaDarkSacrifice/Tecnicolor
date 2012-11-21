@@ -63,4 +63,35 @@ class ApplicationController < ActionController::Base
 		return @producto
 	end
 
+
+	def buscarProducto nombre_p, descripcion_p, categoria_p, marca_p, limit
+		@nombre=nombre_p
+    @descripcion=descripcion_p
+
+		@categoria=""
+		@marca=""
+		if(categoria_p!="")
+    	@categoria=Integer(categoria_p)
+		end
+		if(marca_p!="")
+    	@marca=Integer(marca_p)
+		end
+
+		@productos=[]
+		if(@categoria=="" && @marca=="")
+			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ?", @nombre + "%", @descripcion + "%"])
+		end
+		if(@categoria=="" && @marca!="")
+			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@marca])
+		end
+		if(@categoria!="" && @marca=="")
+			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ?", @nombre + "%", @descripcion + "%",@categoria])
+		end
+		if(@categoria!="" && @marca!="")
+			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@categoria,@marca])
+		end
+
+		return @producto
+	end
+
 end

@@ -1,0 +1,25 @@
+$('#resultados_tabla tr').remove();
+
+$('#resultados_tabla').append("<tr>"+
+    "<th>Nombre</th>"+
+    "<th>Descripcion</th>"+
+    "<th>Categoria</th>"+
+    "<th>Marca</th>"+
+    "<th>Existencias</th>"+
+    "<th></th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%@productos.each do |p|%>
+$('#resultados_tabla').append("<tr>"+
+                "<td><%=p.nombre%></td>"+
+                "<td><%=p.descripcion%></td>"+
+                "<td><%=p.categorium.nombre%></td>"+
+                "<td><%=p.marca.nombre%></td>"+
+                "<td><%=p.existencias%></td>"+
+                "<td><a href=\"/productos/<%= p.id %>\">Mostrar</a></td>"+
+                "<td><a href=\"/productos/<%= p.id %>/edit\">Editar</a></td>"+
+                "</tr>");
+
+<%end%>

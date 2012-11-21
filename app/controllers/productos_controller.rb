@@ -81,4 +81,13 @@ class ProductosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def buscar_producto_inventario
+
+		@producto=buscarProducto params[:nombre],params[:descripcion],params[:categoria][0],params[:marca][0], 25
+
+    respond_to do |format|
+			format.js
+		end
+	end
 end
