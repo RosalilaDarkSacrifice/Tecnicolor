@@ -1,0 +1,21 @@
+<%= form_for(@pago_efectivo) do |f| %>
+  <% if @pago_efectivo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pago_efectivo.errors.count, "error") %> prohibited this pago_efectivo from being saved:</h2>
+
+      <ul>
+      <% @pago_efectivo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :anulada %><br />
+    <%= f.check_box :anulada %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Finalizar" %>
+  </div>
+<% end %>

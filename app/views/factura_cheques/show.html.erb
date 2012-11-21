@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Numero de factura:</b>
+  <%= @factura_cheque.numero %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @factura_cheque.fecha %>
+</p>
+
+<p>
+  <b>Cliente:</b>
+  <%= @factura_cheque.cliente %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @factura_cheque.direccion %>
+</p>
+
+<p>
+  <b>Numero cheque:</b>
+  <%= @factura_cheque.numero_cheque %>
+</p>
+
+<p>
+  <b>Banco:</b>
+  <%= @factura_cheque.banco %>
+</p>
+
+<p>
+  <b>Anulada:</b>
+  <%= @factura_cheque.anulada %>
+</p>
+
+<p>
+  <b>Subtotal:</b>
+  <%= @factura_cheque.getSubtotal %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%= @factura_cheque.getTotal %>
+</p>
+
+
+<br/>
+
+<h2>Productos</h2>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+  </tr>
+
+<% @factura_cheque.producto_factura_cheques.each do |producto_factura_cheque| %>
+  <tr>
+    <td><%= producto_factura_cheque.producto.nombre %></td>
+    <td><%= producto_factura_cheque.cantidad %></td>
+    <td><%= producto_factura_cheque.precio %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+<br/>
+<br/>
+
+<%= link_to 'Anular', edit_factura_cheque_path(@factura_cheque) %> |
+<%= link_to 'Atras', factura_cheques_path %>

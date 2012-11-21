@@ -1,0 +1,61 @@
+<%= form_for(@cliente_credito) do |f| %>
+  <% if @cliente_credito.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cliente_credito.errors.count, "error") %> prohibited this cliente_credito from being saved:</h2>
+
+      <ul>
+      <% @cliente_credito.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %><br />
+    <%= f.text_area :direccion %>
+  </div>
+  <div class="field">
+    <%= f.label :empresa %><br />
+    <%= f.text_field :empresa %>
+  </div>
+  <div class="field">
+    <%= f.label :limite_credito %><br />
+    <%= f.number_field :limite_credito %>
+  </div>
+  <div class="field">
+    <%= f.label :limite_dias %><br />
+    <%= f.number_field :limite_dias %>
+  </div>
+  <div class="field">
+    <%= f.label :referencia_1 %><br />
+    <%= f.text_field :referencia_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono_ref_1 %><br />
+    <%= f.text_field :telefono_ref_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :celular_ref_1 %><br />
+    <%= f.text_field :celular_ref_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :referencia_2 %><br />
+    <%= f.text_field :referencia_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono_ref_2 %><br />
+    <%= f.text_field :telefono_ref_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :celular_ref_2 %><br />
+    <%= f.text_field :celular_ref_2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit "finalizar"%>
+  </div>
+<% end %>

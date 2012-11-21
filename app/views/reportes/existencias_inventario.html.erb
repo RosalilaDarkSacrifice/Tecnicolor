@@ -1,0 +1,25 @@
+<h1>Reporte por galones</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Ingresos</th>
+    <th>Transferencias internas</th>
+    <th>Salidas</th>
+    <th>Ventas</th>
+    <th>Existencias</th>
+  </tr>
+
+<%i=0%>
+<% @categoria.each do |categorium| %>
+  <tr>
+    <td><%= categorium.nombre %></td>
+    <td><%= @ingresos[i] %></td>
+    <td><%= @transferencias[i] %></td>
+    <td><%= @salidas[i] %></td>
+    <td><%= @ventas[i] %></td>
+    <td><%= (@ingresos[i]*100 + @transferencias[i]*100 - @salidas[i]*100 - @ventas[i]*100)/100 %></td>
+  </tr>
+<%i+=1%>
+<% end %>
+</table>

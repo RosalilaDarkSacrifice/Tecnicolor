@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @cliente_credito.nombre %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @cliente_credito.direccion %>
+</p>
+
+<p>
+  <b>Empresa:</b>
+  <%= @cliente_credito.empresa %>
+</p>
+
+<p>
+  <b>Limite credito:</b>
+  <%= @cliente_credito.limite_credito %>
+</p>
+
+<p>
+  <b>Limite dias:</b>
+  <%= @cliente_credito.limite_dias %>
+</p>
+
+<p>
+  <b>Referencia 1:</b>
+  <%= @cliente_credito.referencia_1 %>
+</p>
+
+<p>
+  <b>Telefono ref 1:</b>
+  <%= @cliente_credito.telefono_ref_1 %>
+</p>
+
+<p>
+  <b>Celular ref 1:</b>
+  <%= @cliente_credito.celular_ref_1 %>
+</p>
+
+<p>
+  <b>Referencia 2:</b>
+  <%= @cliente_credito.referencia_2 %>
+</p>
+
+<p>
+  <b>Telefono ref 2:</b>
+  <%= @cliente_credito.telefono_ref_2 %>
+</p>
+
+<p>
+  <b>Celular ref 2:</b>
+  <%= @cliente_credito.celular_ref_2 %>
+</p>
+
+
+<%= link_to 'Editar', edit_cliente_credito_path(@cliente_credito) %> |
+<%= link_to 'Atras', cliente_creditos_path %>

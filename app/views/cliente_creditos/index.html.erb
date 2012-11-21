@@ -1,0 +1,31 @@
+<h1>Listado de Clientes de credito</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Direccion</th>
+    <th>Empresa</th>
+    <th>Limite credito</th>
+    <th>Limite dias</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cliente_creditos.each do |cliente_credito| %>
+  <tr>
+    <td><%= cliente_credito.nombre %></td>
+    <td><%= cliente_credito.direccion %></td>
+    <td><%= cliente_credito.empresa %></td>
+    <td><%= cliente_credito.limite_credito %></td>
+    <td><%= cliente_credito.limite_dias %></td>
+    <td><%= link_to 'Mostrar', cliente_credito %></td>
+    <td><%= link_to 'Editar', edit_cliente_credito_path(cliente_credito) %></td>
+    <td><%= link_to 'Borrar', cliente_credito, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Cliente de credito', new_cliente_credito_path %>

@@ -1,0 +1,33 @@
+<h1>Listando proveedores</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Direccion</th>
+    <th>Contacto 1</th>
+    <th>Telefono 1</th>
+    <th>Contacto 2</th>
+    <th>Telefono 2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @proveedors.each do |proveedor| %>
+  <tr>
+    <td><%= proveedor.nombre %></td>
+    <td><%= proveedor.direccion %></td>
+    <td><%= proveedor.contacto_1 %></td>
+    <td><%= proveedor.telefono_1 %></td>
+    <td><%= proveedor.contacto_2 %></td>
+    <td><%= proveedor.telefono_2 %></td>
+    <td><%= link_to 'Mostrar', proveedor %></td>
+    <td><%= link_to 'Editar', edit_proveedor_path(proveedor) %></td>
+    <td><%= link_to 'Borrar', proveedor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Proveedor', new_proveedor_path %>

@@ -1,0 +1,119 @@
+<h1>Nueva Factura en Cheque</h1>
+
+<h3>Numero: <%=sigNumFactura%></h3>
+
+<%= render 'form' %>
+
+<table border="1">
+  <tr>
+    <td>
+
+<table id="productos_tabla">
+  <tr>
+    <th>Producto</th>
+		<th>Descripcion</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+  </tr>
+</table>
+
+<h3 id="subtotal">Subtotal: 0</h3>
+<h3 id="total">Total: 0</h3>
+
+<% @producto_factura_cheque=ProductoFacturaCheque.new %>
+<%= form_for(@producto_factura_cheque, :url => { :action => "agregarProductoCheque" }, remote: true) do |f| %>
+  <% if @producto_factura_cheque.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@producto_factura_cheque.errors.count, "error") %> prohibited this producto_factura_cheque from being saved:</h2>
+
+      <ul>
+      <% @producto_factura_cheque.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" id="pr13">
+    <%= f.label :producto_id %><br />
+    <%= f.number_field :producto_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cantidad %><br />
+    <%= f.text_field :cantidad %>
+  </div>
+  <div class="field">
+    <%= f.label :precio %><br />
+    <%= f.text_field :precio %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+    </td>
+
+    <td>
+
+
+
+
+
+<%= form_tag buscar_producto_entrada_path,remote: true do%>
+<table>
+  <tr>
+    <td>
+      <b>Nombre:</b>
+    </td>
+    <td>
+      <%= text_field_tag :nombre, params[:nombre] %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Descripcion:</b>
+    </td>
+    <td>
+      <%= text_field_tag :descripcion, params[:descripcion] %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <b>Categoria:</b>
+    </td>
+    <td>
+			<%= collection_select(:categoria,@asdf, Categorium.all, :id, :nombre,{ :include_blank => true }) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <b>Marca:</b>
+    </td>
+    <td>
+			<%= collection_select(:marca,@asdf, Marca.all, :id, :nombre,{ :include_blank => true }) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= submit_tag "Buscar" %>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+<%end%>
+
+<table id="resultados_tabla">
+
+</table>
+
+
+
+    </td>
+  </tr>
+</table>
+
+<%= link_to 'Atras', factura_cheques_path %>

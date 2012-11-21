@@ -1,0 +1,29 @@
+<h1>Listing producto_factura_creditos</h1>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Factura</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @producto_factura_creditos.each do |producto_factura_credito| %>
+  <tr>
+    <td><%= producto_factura_credito.producto_id %></td>
+    <td><%= producto_factura_credito.factura_credito_id %></td>
+    <td><%= producto_factura_credito.cantidad %></td>
+    <td><%= producto_factura_credito.precio %></td>
+    <td><%= link_to 'Show', producto_factura_credito %></td>
+    <td><%= link_to 'Edit', edit_producto_factura_credito_path(producto_factura_credito) %></td>
+    <td><%= link_to 'Destroy', producto_factura_credito, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Producto factura credito', new_producto_factura_credito_path %>

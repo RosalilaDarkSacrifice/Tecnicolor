@@ -1,0 +1,29 @@
+<h1>Listado de pagos en tarjeta</h1>
+
+<table>
+  <tr>
+    <th>Numero factura credito</th>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Anulada</th>
+    <th>Monto</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pago_tarjeta.each do |pago_tarjetum| %>
+  <tr>
+    <td><%= pago_tarjetum.factura_credito.numero %></td>
+    <td><%= pago_tarjetum.fecha %></td>
+    <td><%= pago_tarjetum.numero %></td>
+    <td><%= pago_tarjetum.anulada %></td>
+    <td><%= pago_tarjetum.monto %></td>
+    <td><%= link_to 'Mostrar', pago_tarjetum %></td>
+    <td><%= link_to 'Anular', edit_pago_tarjetum_path(pago_tarjetum) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Pago en tarjeta', new_pago_tarjetum_path %>

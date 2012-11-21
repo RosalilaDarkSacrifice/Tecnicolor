@@ -1,0 +1,33 @@
+<h1>Listado de productos</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Categoria</th>
+    <th>Precio maximo</th>
+    <th>Precio minimo</th>
+    <th>Existencias</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @productos.each do |producto| %>
+  <tr>
+    <td><%= producto.nombre %></td>
+    <td><%= producto.descripcion %></td>
+    <td><%= producto.categorium.nombre %></td>
+    <td><%= producto.precio_maximo %></td>
+    <td><%= producto.precio_minimo %></td>
+    <td><%= producto.existencias %></td>
+    <td><%= link_to 'Mostrar', producto %></td>
+    <td><%= link_to 'Editar', edit_producto_path(producto) %></td>
+    <td><%= link_to 'Borrar', producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Producto', new_producto_path %>

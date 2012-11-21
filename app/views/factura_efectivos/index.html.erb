@@ -1,0 +1,29 @@
+<h1>Listado de Facturas en Efectivo</h1>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Cliente</th>
+    <th>Direccion</th>
+    <th>Anulada</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @factura_efectivos.each do |factura_efectivo| %>
+  <tr>
+    <td><%= factura_efectivo.fecha %></td>
+    <td><%= factura_efectivo.numero %></td>
+    <td><%= factura_efectivo.cliente %></td>
+    <td><%= factura_efectivo.direccion %></td>
+    <td><%= factura_efectivo.anulada %></td>
+    <td><%= link_to 'Mostrar', factura_efectivo %></td>
+    <td><%= link_to 'Anular', edit_factura_efectivo_path(factura_efectivo) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nueva Factura en efectivo', new_factura_efectivo_path %>

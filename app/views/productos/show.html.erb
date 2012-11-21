@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @producto.nombre %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @producto.descripcion %>
+</p>
+
+<p>
+  <b>Categoria:</b>
+  <%= @producto.categorium.nombre %>
+</p>
+
+<p>
+  <b>Marca:</b>
+  <%= @producto.marca.nombre %>
+</p>
+
+<p>
+  <b>Cantidad galones:</b>
+  <%= @producto.cantidad_galones %>
+</p>
+
+<p>
+  <b>Precio maximo:</b>
+  <%= @producto.precio_maximo %>
+</p>
+
+<p>
+  <b>Precio minimo:</b>
+  <%= @producto.precio_minimo %>
+</p>
+
+<p>
+  <b>Precio costo:</b>
+  <%= @producto.precio_costo %>
+</p>
+
+<p>
+  <b>Precio exitencias:</b>
+  <%= @producto.existencias %>
+</p>
+
+<%= link_to 'Editar', edit_producto_path(@producto) %> |
+<%= link_to 'Atras', productos_path %>

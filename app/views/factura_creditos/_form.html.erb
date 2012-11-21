@@ -1,0 +1,29 @@
+<%= form_for(@factura_credito) do |f| %>
+  <% if @factura_credito.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@factura_credito.errors.count, "error") %> prohibited this factura_credito from being saved:</h2>
+
+      <ul>
+      <% @factura_credito.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha %><br />
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :cliente_credito_id %><br />
+    <%= f.collection_select :cliente_credito_id, ClienteCredito.all, :id, :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :estado %><br />
+    <%= f.text_field :estado %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Finalizar"%>
+  </div>
+<% end %>

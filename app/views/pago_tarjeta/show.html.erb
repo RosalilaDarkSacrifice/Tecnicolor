@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Numero factura credito:</b>
+  <%= @pago_tarjetum.factura_credito.numero %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @pago_tarjetum.fecha %>
+</p>
+
+<p>
+  <b>Numero:</b>
+  <%= @pago_tarjetum.numero %>
+</p>
+
+<p>
+  <b>Anulada:</b>
+  <%= @pago_tarjetum.anulada %>
+</p>
+
+<p>
+  <b>Monto:</b>
+  <%= @pago_tarjetum.monto %>
+</p>
+
+
+<%= link_to 'Editar', edit_pago_tarjetum_path(@pago_tarjetum) %> |
+<%= link_to 'Atras', pago_tarjeta_path %>

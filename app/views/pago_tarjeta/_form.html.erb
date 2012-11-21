@@ -1,0 +1,37 @@
+<%= form_for(@pago_tarjetum) do |f| %>
+  <% if @pago_tarjetum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pago_tarjetum.errors.count, "error") %> prohibited this pago_tarjetum from being saved:</h2>
+
+      <ul>
+      <% @pago_tarjetum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" style="display:none">
+    <%= f.label :factura_credito_id %><br />
+    <%= f.number_field :factura_credito_id, :value => params[:id] %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br />
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :numero %><br />
+    <%= f.number_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :anulada %><br />
+    <%= f.check_box :anulada %>
+  </div>
+  <div class="field">
+    <%= f.label :monto %><br />
+    <%= f.text_field :monto %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Finalizar" %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<h1>Listado de pagos en efectivo</h1>
+
+<table>
+  <tr>
+    <th>Numero factura credito</th>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Anulada</th>
+    <th>Monto</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pago_efectivos.each do |pago_efectivo| %>
+  <tr>
+    <td><%= pago_efectivo.factura_credito.numero %></td>
+    <td><%= pago_efectivo.fecha %></td>
+    <td><%= pago_efectivo.numero %></td>
+    <td><%= pago_efectivo.anulada %></td>
+    <td><%= pago_efectivo.monto %></td>
+    <td><%= link_to 'Mostrar', pago_efectivo %></td>
+    <td><%= link_to 'Anular', edit_pago_efectivo_path(pago_efectivo) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Pago en efectivo', new_pago_efectivo_path %>

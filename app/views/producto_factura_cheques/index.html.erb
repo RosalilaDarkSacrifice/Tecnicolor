@@ -1,0 +1,29 @@
+<h1>Listing producto_factura_cheques</h1>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Factura</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @producto_factura_cheques.each do |producto_factura_cheque| %>
+  <tr>
+    <td><%= producto_factura_cheque.producto_id %></td>
+    <td><%= producto_factura_cheque.factura_cheque_id %></td>
+    <td><%= producto_factura_cheque.cantidad %></td>
+    <td><%= producto_factura_cheque.precio %></td>
+    <td><%= link_to 'Show', producto_factura_cheque %></td>
+    <td><%= link_to 'Edit', edit_producto_factura_cheque_path(producto_factura_cheque) %></td>
+    <td><%= link_to 'Destroy', producto_factura_cheque, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Producto factura cheque', new_producto_factura_cheque_path %>

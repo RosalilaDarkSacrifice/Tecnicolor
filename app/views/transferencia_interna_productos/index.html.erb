@@ -1,0 +1,27 @@
+<h1>Transferencias internas</h1>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Producto</th>
+    <th>Categoria</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @transferencia_interna_productos.each do |transferencia_interna_producto| %>
+  <tr>
+    <td><%= transferencia_interna_producto.fecha %></td>
+    <td><%= transferencia_interna_producto.producto.nombre %></td>
+    <td><%= transferencia_interna_producto.categorium.nombre %></td>
+    <td><%= link_to 'Mostrar', transferencia_interna_producto %></td>
+    <td><%= link_to 'Editar', edit_transferencia_interna_producto_path(transferencia_interna_producto) %></td>
+    <td><%= link_to 'Borrar', transferencia_interna_producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nueva Transferencia interna de producto', new_transferencia_interna_producto_path %>

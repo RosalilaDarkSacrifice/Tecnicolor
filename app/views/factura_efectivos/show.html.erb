@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Numero:</b>
+  <%= @factura_efectivo.numero %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @factura_efectivo.fecha %>
+</p>
+
+<p>
+  <b>Cliente:</b>
+  <%= @factura_efectivo.cliente %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @factura_efectivo.direccion %>
+</p>
+
+<p>
+  <b>Anulada:</b>
+  <%= @factura_efectivo.anulada %>
+</p>
+
+<p>
+  <b>Subtotal:</b>
+  <%= @factura_efectivo.getSubtotal %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%= @factura_efectivo.getTotal %>
+</p>
+
+
+<br/>
+
+<h2>Productos</h2>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+  </tr>
+
+<% @factura_efectivo.producto_factura_efectivos.each do |producto_factura_efectivo| %>
+  <tr>
+    <td><%= producto_factura_efectivo.producto.nombre %></td>
+    <td><%= producto_factura_efectivo.cantidad %></td>
+    <td><%= producto_factura_efectivo.precio %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<br/>
+<br/>
+
+<%= link_to 'Anular', edit_factura_efectivo_path(@factura_efectivo) %> |
+<%= link_to 'Atras', factura_efectivos_path %>

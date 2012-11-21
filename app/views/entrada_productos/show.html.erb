@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @entrada_producto.fecha %>
+</p>
+
+<p>
+  <b>Producto:</b>
+  <%= @entrada_producto.producto.nombre %>
+</p>
+
+<p>
+  <b>Proveedor:</b>
+  <%= @entrada_producto.proveedor.nombre %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @entrada_producto.cantidad %>
+</p>
+
+
+<%= link_to 'Edit', edit_entrada_producto_path(@entrada_producto) %> |
+<%= link_to 'Back', entrada_productos_path %>

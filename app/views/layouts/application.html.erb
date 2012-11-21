@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tecnicolor</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <link href="/style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+
+<body>
+
+<!--
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+-->
+
+<div id="header">
+	<div id="menu">
+		<% if current_user %>    
+		<ul>
+
+			<li class="current_page_item"><a href="/">Inicio</a></li>
+			<% if soyAdministrador %>
+			<li><%= link_to "Nuevo usuario", sign_up_path %></li>
+			<% end %>
+			<li><%= link_to "Cerrar sesión", log_out_path %></li>
+		</ul>
+		<% else %>
+		<ul>
+
+			<li class="current_page_item"><a href="/">Inicio</a></li>
+			<li><%= link_to "Iniciar sesión", log_in_path %></li>
+		</ul>
+		<% end %>
+	</div>
+	<!-- end #menu -->
+	<div id="logo">
+		<h1><a href="/">Tecnicolor </a></h1>
+		<% if current_user %>
+			<h2>Bienvenido <%= current_user.nombre %>.</h2>
+		<% else %>
+			<h2>Favor ingresar una nueva sesión.</h2>
+		<% end %>
+	</div>
+	<hr />
+</div>
+<!-- end #header -->
+<!-- end #header -->
+<!-- end #header-wrapper -->
+<!-- end #logo -->
+<div id="page">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="content">
+				<div class="post">
+					<%= yield %>
+
+<!--
+					<h2 class="title">Titulo</h2>
+					<div class="entry">
+						<p>texto</p>
+					</div>
+					<div><a href="#" class="links">Submit</a></div>
+-->
+				</div>
+			</div>
+			<!-- end #content -->
+			<div id="sidebar">
+				<ul>
+					<li>
+						<h2>Contado</h2>
+						<ul>
+							<li><%= link_to "Factura en efectivo", new_factura_efectivo_path %></li>
+							<li><%= link_to "Factura en cheque", new_factura_cheque_path %></li>
+							<li><%= link_to "Factura en tarjeta", new_factura_tarjetum_path %></li>
+						</ul>
+						<br/>
+						<h2>Credito</h2>
+						<ul>
+							<li><%= link_to "Factura en credito", new_factura_credito_path %></li>
+							<li><%= link_to "Cliente de credito", cliente_creditos_path %></li>
+						</ul>
+						<br/>
+						<h2>Transferencias de productos</h2>
+						<ul>
+							<li><%= link_to "Entradas", new_entrada_producto_path %></li>
+							<li><%= link_to "Transferencia interna", new_transferencia_interna_producto_path %></li>
+							<li><%= link_to "Salida por mal estado", new_salida_producto_mal_estado_path %></li>
+						</ul>
+						<h2>Inventario</h2>
+						<ul>
+							<li><%= link_to "Nuevo productos", new_producto_path %></li>
+							<li><%= link_to "Marcas", marcas_path %></li>
+							<li><%= link_to "Categorias", categoria_path %></li>
+							<li><%= link_to "Proveedores", proveedors_path %></li>
+							<li><%= link_to "Inventario", productos_path %></li>
+						</ul>
+						<br/>
+						<h2>Reportes</h2>
+						<ul>
+							<li><%= link_to "Arqueo diario", "/arqueo" %></li>
+							<li><%= link_to "Consultar factura", "/consultar_factura" %></li>
+							<li><%= link_to "Cuentas por cobrar", "/cuentas_por_cobrar" %></li>
+							<li><%= link_to "Reporte por galones", "/existencias_inventario" %></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- end #sidebar -->
+
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #page -->
+	</div>
+</div>
+<div id="footer-bgcontent">
+	<div id="footer">
+		<p>yuhC</p>
+	</div>
+	<!-- end #footer -->
+</div>
+
+</body>
+
+</html>

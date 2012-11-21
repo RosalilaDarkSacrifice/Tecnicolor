@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Producto:</b>
+  <%= @producto_factura_efectivo.producto_id %>
+</p>
+
+<p>
+  <b>Factura:</b>
+  <%= @producto_factura_efectivo.factura_id %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @producto_factura_efectivo.cantidad %>
+</p>
+
+<p>
+  <b>Precio:</b>
+  <%= @producto_factura_efectivo.precio %>
+</p>
+
+
+<%= link_to 'Edit', edit_producto_factura_efectivo_path(@producto_factura_efectivo) %> |
+<%= link_to 'Back', producto_factura_efectivos_path %>

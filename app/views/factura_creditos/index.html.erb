@@ -1,0 +1,29 @@
+<h1>Listado de Facturas en Creditos</h1>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Cliente credito</th>
+    <th>Estado</th>
+    <th>Anulada</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @factura_creditos.each do |factura_credito| %>
+  <tr>
+    <td><%= factura_credito.fecha %></td>
+    <td><%= factura_credito.numero %></td>
+    <td><%= factura_credito.cliente_credito.nombre %></td>
+    <td><%= factura_credito.estado %></td>
+    <td><%= factura_credito.anulada %></td>
+    <td><%= link_to 'Mostrar', factura_credito %></td>
+    <td><%= link_to 'Anular', edit_factura_credito_path(factura_credito) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nueva Factura en credito', new_factura_credito_path %>

@@ -1,0 +1,29 @@
+<h1>Listado de entrada de productos</h1>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Producto</th>
+    <th>Proveedor</th>
+    <th>Cantidad</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @entrada_productos.each do |entrada_producto| %>
+  <tr>
+    <td><%= entrada_producto.fecha %></td>
+    <td><%= entrada_producto.producto.nombre %></td>
+    <td><%= entrada_producto.proveedor.nombre %></td>
+    <td><%= entrada_producto.cantidad %></td>
+    <td><%= link_to 'Mostrar', entrada_producto %></td>
+    <td><%= link_to 'Editar', edit_entrada_producto_path(entrada_producto) %></td>
+    <td><%= link_to 'Borrar', entrada_producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nueva Entrada de producto', new_entrada_producto_path %>

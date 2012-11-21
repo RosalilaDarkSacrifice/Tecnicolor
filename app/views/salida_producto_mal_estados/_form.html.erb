@@ -1,0 +1,99 @@
+<table>
+	<tr>
+		<td>
+
+
+
+<%= form_for(@salida_producto_mal_estado) do |f| %>
+  <% if @salida_producto_mal_estado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@salida_producto_mal_estado.errors.count, "error") %> prohibited this salida_producto_mal_estado from being saved:</h2>
+
+      <ul>
+      <% @salida_producto_mal_estado.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha %><br />
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field" id="pr13">
+    <%= f.label :producto_id %><br />
+    <%= f.number_field :producto_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cantidad %><br />
+    <%= f.text_field :cantidad %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Finalizar"%>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+		</td>
+
+		<td>
+<%= form_tag buscar_producto_salida_path,remote: true do%>
+<table>
+  <tr>
+    <td>
+      <b>Nombre:</b>
+    </td>
+    <td>
+      <%= text_field_tag :nombre, params[:nombre] %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Descripcion:</b>
+    </td>
+    <td>
+      <%= text_field_tag :descripcion, params[:descripcion] %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <b>Categoria:</b>
+    </td>
+    <td>
+			<%= collection_select(:categoria,@asdf, Categorium.all, :id, :nombre,{ :include_blank => true }) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <b>Marca:</b>
+    </td>
+    <td>
+			<%= collection_select(:marca,@asdf, Marca.all, :id, :nombre,{ :include_blank => true }) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= submit_tag "Buscar" %>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+<%end%>
+
+<table id="resultados_tabla">
+
+</table>
+
+		</td>
+	</tr>
+</table>

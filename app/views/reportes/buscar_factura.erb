@@ -1,0 +1,104 @@
+$('#tabla_cheques tr').remove();
+
+$('#tabla_cheques').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>Numero</th>"+
+    "<th>Cliente</th>"+
+    "<th>Direccion</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%@factura_cheques.each do |p|%>
+$('#tabla_cheques').append("<tr>"+
+                "<td><%=p.fecha%></td>"+
+                "<td><%=p.numero%></td>"+
+                "<td><%=p.cliente%></td>"+
+                "<td><%=p.direccion%></td>"+
+                "<td><%=p.anulada%></td>"+
+                "<td><a href=\"/factura_cheques/<%=p.id%>\">Mostrar</a></td>"+
+                "</tr>");
+<%end%>
+
+
+
+
+
+
+$('#tabla_creditos tr').remove();
+
+$('#tabla_creditos').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>Numero</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%@factura_creditos.each do |p|%>
+$('#tabla_creditos').append("<tr>"+
+                "<td><%=p.fecha%></td>"+
+                "<td><%=p.numero%></td>"+	
+                "<td><%=p.anulada%></td>"+
+                "<td><a href=\"/factura_creditos/<%=p.id%>\">Mostrar</a></td>"+
+                "</tr>");
+<%end%>
+
+
+
+
+
+
+
+
+$('#tabla_efectivos tr').remove();
+
+$('#tabla_efectivos').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>Numero</th>"+
+    "<th>Cliente</th>"+
+    "<th>Direccion</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%@factura_efectivos.each do |p|%>
+$('#tabla_efectivos').append("<tr>"+
+                "<td><%=p.fecha%></td>"+
+                "<td><%=p.numero%></td>"+
+                "<td><%=p.cliente%></td>"+
+                "<td><%=p.direccion%></td>"+
+                "<td><%=p.anulada%></td>"+
+                "<td><a href=\"/factura_efectivos/<%=p.id%>\">Mostrar</a></td>"+
+                "</tr>");
+<%end%>
+
+
+
+
+
+
+
+
+
+
+$('#tabla_tarjeta tr').remove();
+
+$('#tabla_tarjeta').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>Numero</th>"+
+    "<th>Cliente</th>"+
+    "<th>Direccion</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%@factura_tarjeta.each do |p|%>
+$('#tabla_tarjeta').append("<tr>"+
+                "<td><%=p.fecha%></td>"+
+                "<td><%=p.numero%></td>"+
+                "<td><%=p.cliente%></td>"+
+                "<td><%=p.direccion%></td>"+
+                "<td><%=p.anulada%></td>"+
+                "<td><a href=\"/factura_tarjeta/<%=p.id%>\">Mostrar</a></td>"+
+                "</tr>");
+<%end%>

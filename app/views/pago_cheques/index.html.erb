@@ -1,0 +1,34 @@
+<h1>Listado de pago en cheques</h1>
+
+<table>
+  <tr>
+    <th>Numero factura credito</th>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Anulada</th>
+    <th>Monto</th>
+    <th>Banco</th>
+    <th>Numero cheque</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pago_cheques.each do |pago_cheque| %>
+  <tr>
+    <td><%= pago_cheque.factura_credito.numero %></td>
+    <td><%= pago_cheque.fecha %></td>
+    <td><%= pago_cheque.numero %></td>
+    <td><%= pago_cheque.anulada %></td>
+    <td><%= pago_cheque.monto %></td>
+    <td><%= pago_cheque.banco %></td>
+    <td><%= pago_cheque.numero_cheque %></td>
+    <td><%= link_to 'Mostrar', pago_cheque %></td>
+    <td><%= link_to 'Anular', edit_pago_cheque_path(pago_cheque) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Pago en cheque', new_pago_cheque_path %>

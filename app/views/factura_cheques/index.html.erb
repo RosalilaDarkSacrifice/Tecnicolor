@@ -1,0 +1,33 @@
+<h1>Listado de Facturas en Cheques</h1>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Cliente</th>
+    <th>Direccion</th>
+    <th>Numero cheque</th>
+    <th>Banco</th>
+    <th>Anulada</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @factura_cheques.each do |factura_cheque| %>
+  <tr>
+    <td><%= factura_cheque.fecha %></td>
+    <td><%= factura_cheque.numero %></td>
+    <td><%= factura_cheque.cliente %></td>
+    <td><%= factura_cheque.direccion %></td>
+    <td><%= factura_cheque.numero_cheque %></td>
+    <td><%= factura_cheque.banco %></td>
+    <td><%= factura_cheque.anulada %></td>
+    <td><%= link_to 'Mostrar', factura_cheque %></td>
+    <td><%= link_to 'Anular', edit_factura_cheque_path(factura_cheque) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nueva factura en cheque', new_factura_cheque_path %>

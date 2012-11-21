@@ -1,0 +1,69 @@
+<h1>Arqueo diario</h1>
+
+<h2>Reporte de facturacion</h2>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Facturas en Cheque</th>
+    <th>Facturas en Credito</th>
+    <th>Factuas en Efectivo</th>
+    <th>Facturas en Tarjeta</th>
+    <th>Total</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <tr>
+    <td>Ingresos:</td>
+    <td><%=@factura_cheques_total%></td>
+    <td><%=@factura_creditos_total%></td>
+    <td><%=@factura_efectivos_total%></td>
+    <td><%=@factura_tarjeta_total%></td>
+    <td><%=@factura_cheques_total + @factura_creditos_total + @factura_efectivos_total + @factura_tarjeta_total%></td>
+  </tr>
+
+  <tr>
+    <td>Cantidad:</td>
+    <td><%=@factura_cheques.count%></td>
+    <td><%=@factura_creditos.count%></td>
+    <td><%=@factura_efectivos.count%></td>
+    <td><%=@factura_tarjeta.count%></td>
+    <td><%=@factura_cheques.count + @factura_creditos.count + @factura_efectivos.count + @factura_tarjeta.count%></td>
+  </tr>
+
+</table>
+
+
+<h2>Reporte de pagos</h2>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Pagos en Cheque</th>
+    <th>Pagos en Efectivo</th>
+    <th>Pagos en Tarjeta</th>
+    <th>Total</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <tr>
+    <td>Ingresos:</td>
+    <td><%=@pagos_cheques_total%></td>
+    <td><%=@pagos_efectivos_total%></td>
+    <td><%=@pagos_tarjeta_total%></td>
+    <td><%=@pagos_cheques_total + @pagos_efectivos_total + @pagos_tarjeta_total%></td>
+  </tr>
+
+  <tr>
+    <td>Cantidad:</td>
+    <td><%=@pagos_cheques.count%></td>
+    <td><%=@pagos_efectivos.count%></td>
+    <td><%=@pagos_tarjeta.count%></td>
+    <td><%=@pagos_cheques.count + @pagos_efectivos.count + @pagos_tarjeta.count%></td>
+  </tr>
+
+</table>

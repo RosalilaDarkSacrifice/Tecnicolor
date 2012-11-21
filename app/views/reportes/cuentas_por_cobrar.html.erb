@@ -1,0 +1,32 @@
+<h1>Cuentas por cobrar</h1>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Cliente credito</th>
+    <th>Estado</th>
+    <th>Anulada</th>
+    <th>Venta total</th>
+    <th>Pagos total</th>
+    <th>Saldo</th>
+    <th></th>
+  </tr>
+
+<% @cuentas_por_cobrar.each do |factura_credito| %>
+<% if (factura_credito.getTotal - factura_credito.getTotalPagos > 0) %>
+  <tr>
+    <td><%= factura_credito.fecha %></td>
+    <td><%= factura_credito.numero %></td>
+    <td><%= factura_credito.cliente_credito_id %></td>
+    <td><%= factura_credito.estado %></td>
+    <td><%= factura_credito.anulada %></td>
+		<td><%= factura_credito.getTotal %></td>
+		<td><%= factura_credito.getTotalPagos %></td>
+		<td><%= factura_credito.getTotal - factura_credito.getTotalPagos %></td>
+    <td><%= link_to 'Mostrar', factura_credito %></td>
+    <td><%= link_to 'Anular', edit_factura_credito_path(factura_credito) %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>

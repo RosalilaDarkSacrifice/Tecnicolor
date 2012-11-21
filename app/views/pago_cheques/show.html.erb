@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Numero factura credito:</b>
+  <%= @pago_cheque.factura_credito.numero %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @pago_cheque.fecha %>
+</p>
+
+<p>
+  <b>Numero:</b>
+  <%= @pago_cheque.numero %>
+</p>
+
+<p>
+  <b>Anulada:</b>
+  <%= @pago_cheque.anulada %>
+</p>
+
+<p>
+  <b>Monto:</b>
+  <%= @pago_cheque.monto %>
+</p>
+
+<p>
+  <b>Banco:</b>
+  <%= @pago_cheque.banco %>
+</p>
+
+<p>
+  <b>Numero cheque:</b>
+  <%= @pago_cheque.numero_cheque %>
+</p>
+
+
+<%= link_to 'Editar', edit_pago_cheque_path(@pago_cheque) %> |
+<%= link_to 'Atras', pago_cheques_path %>

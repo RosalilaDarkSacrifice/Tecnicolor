@@ -1,0 +1,29 @@
+<h1>Listing producto_factura_tarjeta</h1>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Factura</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @producto_factura_tarjeta.each do |producto_factura_tarjetum| %>
+  <tr>
+    <td><%= producto_factura_tarjetum.producto_id %></td>
+    <td><%= producto_factura_tarjetum.factura_tarjetum_id %></td>
+    <td><%= producto_factura_tarjetum.cantidad %></td>
+    <td><%= producto_factura_tarjetum.precio %></td>
+    <td><%= link_to 'Show', producto_factura_tarjetum %></td>
+    <td><%= link_to 'Edit', edit_producto_factura_tarjetum_path(producto_factura_tarjetum) %></td>
+    <td><%= link_to 'Destroy', producto_factura_tarjetum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Producto factura tarjetum', new_producto_factura_tarjetum_path %>

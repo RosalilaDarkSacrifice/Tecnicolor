@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @transferencia_interna_producto.fecha %>
+</p>
+
+<p>
+  <b>Producto:</b>
+  <%= @transferencia_interna_producto.producto.nombre %>
+</p>
+
+<p>
+  <b>Categoria:</b>
+  <%= @transferencia_interna_producto.categorium.nombre %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @transferencia_interna_producto.cantidad %>
+</p>
+
+<p>
+  <b>Cantidad galones:</b>
+  <%= @transferencia_interna_producto.cantidad_galones %>
+</p>
+
+<%= link_to 'Editar', edit_transferencia_interna_producto_path(@transferencia_interna_producto) %> |
+<%= link_to 'Atras', transferencia_interna_productos_path %>

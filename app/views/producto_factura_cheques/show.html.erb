@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Producto:</b>
+  <%= @producto_factura_cheque.producto_id %>
+</p>
+
+<p>
+  <b>Factura:</b>
+  <%= @producto_factura_cheque.factura_id %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @producto_factura_cheque.cantidad %>
+</p>
+
+<p>
+  <b>Precio:</b>
+  <%= @producto_factura_cheque.precio %>
+</p>
+
+
+<%= link_to 'Edit', edit_producto_factura_cheque_path(@producto_factura_cheque) %> |
+<%= link_to 'Back', producto_factura_cheques_path %>

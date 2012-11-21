@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Numero:</b>
+  <%= @factura_tarjetum.numero %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @factura_tarjetum.fecha %>
+</p>
+
+<p>
+  <b>Cliente:</b>
+  <%= @factura_tarjetum.cliente %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @factura_tarjetum.direccion %>
+</p>
+
+<p>
+  <b>Anulada:</b>
+  <%= @factura_tarjetum.anulada %>
+</p>
+
+<p>
+  <b>Subtotal:</b>
+  <%= @factura_tarjetum.getSubtotal %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%= @factura_tarjetum.getTotal %>
+</p>
+
+
+<br />
+
+<h2>Productos</h2>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+  </tr>
+
+<% @factura_tarjetum.producto_factura_tarjeta.each do |producto_factura_tarjetum| %>
+  <tr>
+    <td><%= producto_factura_tarjetum.producto.nombre %></td>
+    <td><%= producto_factura_tarjetum.cantidad %></td>
+    <td><%= producto_factura_tarjetum.precio %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<br/>
+<br/>
+
+
+<%= link_to 'Anular', edit_factura_tarjetum_path(@factura_tarjetum) %> |
+<%= link_to 'Atras', factura_tarjeta_path %>

@@ -1,0 +1,3 @@
+rails s&
+sleep 10
+firefox localhost:3000

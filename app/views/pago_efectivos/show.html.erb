@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Numero factura credito:</b>
+  <%= @pago_efectivo.factura_credito.numero %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @pago_efectivo.fecha %>
+</p>
+
+<p>
+  <b>Numero:</b>
+  <%= @pago_efectivo.numero %>
+</p>
+
+<p>
+  <b>Anulada:</b>
+  <%= @pago_efectivo.anulada %>
+</p>
+
+<p>
+  <b>Monto:</b>
+  <%= @pago_efectivo.monto %>
+</p>
+
+
+<%= link_to 'Editar', edit_pago_efectivo_path(@pago_efectivo) %> |
+<%= link_to 'Atras', pago_efectivos_path %>

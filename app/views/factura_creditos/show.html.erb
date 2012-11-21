@@ -1,0 +1,160 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Numero:</b>
+  <%= @factura_credito.numero %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @factura_credito.fecha %>
+</p>
+
+<p>
+  <b>Cliente credito:</b>
+  <%= @factura_credito.cliente_credito_id %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @factura_credito.estado %>
+</p>
+
+<p>
+  <b>Anulada:</b>
+  <%= @factura_credito.anulada %>
+</p>
+
+<p>
+  <b>Subtotal:</b>
+  <%= @factura_credito.getSubtotal %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%= @factura_credito.getTotal %>
+</p>
+
+<br />
+
+<h2>Productos</h2>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+  </tr>
+
+<% @factura_credito.producto_factura_creditos.each do |producto_factura_credito| %>
+  <tr>
+    <td><%= producto_factura_credito.producto.nombre %></td>
+    <td><%= producto_factura_credito.cantidad %></td>
+    <td><%= producto_factura_credito.precio %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+<h2>Listado de pago en cheques</h2>
+
+
+<table>
+  <tr>
+    <th>Numero factura credito</th>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Anulada</th>
+    <th>Monto</th>
+    <th>Banco</th>
+    <th>Numero cheque</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @factura_credito.pago_cheques.each do |pago_cheque| %>
+  <tr>
+    <td><%= pago_cheque.factura_credito.numero %></td>
+    <td><%= pago_cheque.fecha %></td>
+    <td><%= pago_cheque.numero %></td>
+    <td><%= pago_cheque.anulada %></td>
+    <td><%= pago_cheque.monto %></td>
+    <td><%= pago_cheque.banco %></td>
+    <td><%= pago_cheque.numero_cheque %></td>
+    <td><%= link_to 'Mostrar', pago_cheque %></td>
+    <td><%= link_to 'Anular', edit_pago_cheque_path(pago_cheque) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Nuevo pago en cheque', pagar_cheque_path(:id => @factura_credito.id) %>
+
+<br />
+
+
+<h2>Listado de pagos en efectivo</h2>
+
+<table>
+  <tr>
+    <th>Numero factura credito</th>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Anulada</th>
+    <th>Monto</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @factura_credito.pago_efectivos.each do |pago_efectivo| %>
+  <tr>
+    <td><%= pago_efectivo.factura_credito.numero %></td>
+    <td><%= pago_efectivo.fecha %></td>
+    <td><%= pago_efectivo.numero %></td>
+    <td><%= pago_efectivo.anulada %></td>
+    <td><%= pago_efectivo.monto %></td>
+    <td><%= link_to 'Mostrar', pago_efectivo %></td>
+    <td><%= link_to 'Anular', edit_pago_efectivo_path(pago_efectivo) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Nuevo pago en efectivo', pagar_efectivo_path(:id => @factura_credito.id) %>
+
+<br />
+
+<h2>Listado de pagos en tarjeta</h2>
+
+<table>
+  <tr>
+    <th>Numero factura credito</th>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Anulada</th>
+    <th>Monto</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @factura_credito.pago_tarjeta.each do |pago_tarjetum| %>
+  <tr>
+    <td><%= pago_tarjetum.factura_credito.numero %></td>
+    <td><%= pago_tarjetum.fecha %></td>
+    <td><%= pago_tarjetum.numero %></td>
+    <td><%= pago_tarjetum.anulada %></td>
+    <td><%= pago_tarjetum.monto %></td>
+    <td><%= link_to 'Mostrar', pago_tarjetum %></td>
+    <td><%= link_to 'Anular', edit_pago_tarjetum_path(pago_tarjetum) %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Pagar en tarjeta', pagar_tarjeta_path(:id => @factura_credito.id) %>
+
+<br />
+<br/>
+<br/>
+
+<%= link_to 'Anular', edit_factura_credito_path(@factura_credito) %> |
+<%= link_to 'Atras', factura_creditos_path %>
