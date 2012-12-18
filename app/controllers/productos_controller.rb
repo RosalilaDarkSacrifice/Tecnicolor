@@ -84,7 +84,7 @@ class ProductosController < ApplicationController
 
 	def buscar_producto_inventario
 
-		@producto=buscarProducto params[:nombre],params[:descripcion],params[:categoria][0],params[:marca][0], 25
+		@producto=buscarProducto25 params[:nombre],params[:descripcion],params[:categoria][0],params[:marca][0]
 
     respond_to do |format|
 			format.js

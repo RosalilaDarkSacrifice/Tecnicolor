@@ -1,46 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Numero:</b>
-  <%= @factura_tarjetum.numero %>
-</p>
-
-<p>
-  <b>Fecha:</b>
-  <%= @factura_tarjetum.fecha %>
-</p>
+<h2 style="text-align: center;">Tecnicolor</h2>
+<p style="text-align: center;">Bo.La Guardia,27 Cll,Ave.Nueva Orleans, San Pedro Sula, Honduras C.A. Tel.: 2556-5156</p>
+<p style="text-align: center;">R.T.N. 05019010294807</p>
+<div style="text-align: right;font-size: 20px;">
+		<%= @factura_tarjetum.fecha %> &nbsp &nbsp - &nbsp &nbsp Tarjeta &nbsp &nbsp - &nbsp &nbsp <%= @factura_tarjetum.numero %>
+</div>
 
 <p>
   <b>Cliente:</b>
   <%= @factura_tarjetum.cliente %>
 </p>
 
-<p>
-  <b>Direccion:</b>
-  <%= @factura_tarjetum.direccion %>
-</p>
-
-<p>
-  <b>Anulada:</b>
-  <%= @factura_tarjetum.anulada %>
-</p>
-
-<p>
-  <b>Subtotal:</b>
-  <%= @factura_tarjetum.getSubtotal %>
-</p>
-
-<p>
-  <b>Total:</b>
-  <%= @factura_tarjetum.getTotal %>
-</p>
-
-
-<br />
-
-<h2>Productos</h2>
-
-<table>
+<table style="width: 600px;">
   <tr>
     <th>Producto</th>
     <th>Cantidad</th>
@@ -54,12 +26,32 @@
     <td><%= producto_factura_tarjetum.precio %></td>
   </tr>
 <% end %>
+  <tr>
+    <td></td>
+    <td>Subtotal:</td>
+    <td><%= @factura_tarjetum.getSubtotal %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>I.S.V:</td>
+    <td><%= @factura_tarjetum.getISV %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><b>Total:</b></td>
+    <td><b><%= @factura_tarjetum.getTotal %></b></td>
+  </tr>
 </table>
 
-<br />
-<br/>
-<br/>
 
-
-<%= link_to 'Anular', edit_factura_tarjetum_path(@factura_tarjetum) %> |
-<%= link_to 'Atras', factura_tarjeta_path %>
+<div id="print-button">
+	<br/>
+	<br/>
+	<br/>
+		<a href="javascript:window.print()">Imprimir</a>
+	<br/>
+	<br/>
+	<br/>
+		<%= link_to 'Anular', edit_factura_tarjetum_path(@factura_tarjetum) %> |
+		<%= link_to 'Atras', factura_tarjeta_path %>
+</div>

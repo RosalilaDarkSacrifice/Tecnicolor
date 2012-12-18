@@ -97,8 +97,16 @@ class FacturaChequesController < ApplicationController
 
   def agregarProductoCheque
 		p_temp=ProductoFacturaCheque.new(params[:producto_factura_cheque])
-  	$producto_global.push(p_temp)
-		$total+=((p_temp.cantidad*100.0).round*(p_temp.precio*100.0).round)/10000.0
+		@success_flag=true
+
+		if p_temp.precio<p_temp.producto.precio_minimo || p_temp.precio>p_temp.producto.precio_maximo
+			@success_flag=false
+		else
+			success_flag=true
+			$producto_global.push(p_temp)
+			$total+=((p_temp.cantidad*100.0).round*(p_temp.precio*100.0).round)/10000.0
+		end
+
     respond_to do |format|
 			format.js
 		end

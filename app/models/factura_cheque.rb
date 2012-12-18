@@ -17,6 +17,10 @@ class FacturaCheque < ActiveRecord::Base
 		return (getSubtotal*100.0*1.12).round/100.0
 	end
 
+	def getISV
+		return (getSubtotal*100.0*0.12).round/100.0
+	end
+
 	def getCantidadFacturas
 		return producto_factura_cheques.count
 	end

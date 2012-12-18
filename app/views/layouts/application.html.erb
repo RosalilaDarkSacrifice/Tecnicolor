@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 
   <link href="/style.css" rel="stylesheet" type="text/css" media="screen" />
+	<link rel="STYLESHEET" type="text/css" href="/estilo_imprimir.css" media="print">
 </head>
 
 
@@ -56,16 +57,8 @@
 	<div id="page-bgtop">
 		<div id="page-bgbtm">
 			<div id="content">
-				<div class="post">
+				<div id="post" class="post">
 					<%= yield %>
-
-<!--
-					<h2 class="title">Titulo</h2>
-					<div class="entry">
-						<p>texto</p>
-					</div>
-					<div><a href="#" class="links">Submit</a></div>
--->
 				</div>
 			</div>
 			<!-- end #content -->
@@ -112,7 +105,6 @@
 				</ul>
 			</div>
 			<!-- end #sidebar -->
-
 			<div style="clear: both;">&nbsp;</div>
 		</div>
 		<!-- end #page -->

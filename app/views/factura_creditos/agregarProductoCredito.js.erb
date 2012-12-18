@@ -1,13 +1,18 @@
-$('#new_producto_factura_cheque input[type="text"]').val("");
-var vista="<tr id =\"pr12\" style=\"display:none\">"+
-    "<td><%= $producto_global.last.producto.nombre %></td>"+
-		"<td><%= $producto_global.last.producto.descripcion %></td>"+
-    "<td><%= $producto_global.last.cantidad %></td>"+
-    "<td><%= $producto_global.last.precio %></td>"+
-  "</tr>";
+<% if @success_flag == false %>
+	$(function() {
+		alert("Precio invalido");
+	});
+<% else %>
+	$('#new_producto_factura_cheque input[type="text"]').val("");
+	var vista="<tr id =\"pr12\" style=\"display:none\">"+
+		  "<td><%= $producto_global.last.producto.nombre %></td>"+
+			"<td><%= $producto_global.last.producto.descripcion %></td>"+
+		  "<td><%= $producto_global.last.cantidad %></td>"+
+		  "<td><%= $producto_global.last.precio %></td>"+
+		"</tr>";
 
-$('#subtotal').text("Subtotal: <%=$total%>");
-$('#total').text("Total: <%=($total*100.0*1.12).round/100.0%>");
-$('#productos_tabla').append(vista);
-$('#productos_tabla #pr12').delay(500).fadeIn();
-
+	$('#subtotal').text("Subtotal: <%=$total%>");
+	$('#total').text("Total: <%=($total*100.0*1.12).round/100.0%>");
+	$('#productos_tabla').append(vista);
+	$('#productos_tabla #pr12').delay(500).fadeIn();
+<% end %>

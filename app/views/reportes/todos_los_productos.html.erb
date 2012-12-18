@@ -22,7 +22,7 @@
     <td><%= producto.existencias %></td>
     <td><%= link_to 'Mostrar', producto %></td>
     <td><%= link_to 'Editar', edit_producto_path(producto) %></td>
-    <td><%= link_to 'Borrar', producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Borrar', producto, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
   </tr>
 <% end %>
 </table>

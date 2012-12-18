@@ -48,23 +48,27 @@ class ApplicationController < ActionController::Base
 
 		@productos=[]
 		if(@categoria=="" && @marca=="")
-			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ?", @nombre + "%", @descripcion + "%"])
+			#@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ?", @nombre + "%", @descripcion + "%"])
+			@productos=Producto.find(:all, :conditions=> ["nombre like ? AND descripcion like ?", @nombre + "%", @descripcion + "%"])
 		end
 		if(@categoria=="" && @marca!="")
-			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@marca])
+			#@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@marca])
+			@productos=Producto.find(:all, :conditions=> ["nombre like ? AND descripcion like ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@marca])
 		end
 		if(@categoria!="" && @marca=="")
-			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ?", @nombre + "%", @descripcion + "%",@categoria])
+			#@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ?", @nombre + "%", @descripcion + "%",@categoria])
+			@productos=Producto.find(:all, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ?", @nombre + "%", @descripcion + "%",@categoria])
 		end
 		if(@categoria!="" && @marca!="")
-			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@categoria,@marca])
+			#@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@categoria,@marca])
+			@productos=Producto.find(:all, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@categoria,@marca])
 		end
 
 		return @producto
 	end
 
 
-	def buscarProducto nombre_p, descripcion_p, categoria_p, marca_p, limit
+	def buscarProducto25 nombre_p, descripcion_p, categoria_p, marca_p
 		@nombre=nombre_p
     @descripcion=descripcion_p
 
@@ -77,18 +81,24 @@ class ApplicationController < ActionController::Base
     	@marca=Integer(marca_p)
 		end
 
+		limit=25
+
 		@productos=[]
 		if(@categoria=="" && @marca=="")
-			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ?", @nombre + "%", @descripcion + "%"])
+			#@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ?", @nombre + "%", @descripcion + "%"])
+			@productos=Producto.find(:all, :conditions=> ["nombre like ? AND descripcion like ?", @nombre + "%", @descripcion + "%"])
 		end
 		if(@categoria=="" && @marca!="")
-			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@marca])
+			#@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@marca])
+			@productos=Producto.find(:all, :conditions=> ["nombre like ? AND descripcion like ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@marca])
 		end
 		if(@categoria!="" && @marca=="")
-			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ?", @nombre + "%", @descripcion + "%",@categoria])
+			#@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ?", @nombre + "%", @descripcion + "%",@categoria])
+			@productos=Producto.find(:all, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ?", @nombre + "%", @descripcion + "%",@categoria])
 		end
 		if(@categoria!="" && @marca!="")
-			@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@categoria,@marca])
+			#@productos=Producto.find(:all,:limit => limit, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@categoria,@marca])
+			@productos=Producto.find(:all, :conditions=> ["nombre like ? AND descripcion like ? AND categorium_id = ? AND marca_id = ?", @nombre + "%", @descripcion + "%",@categoria,@marca])
 		end
 
 		return @producto

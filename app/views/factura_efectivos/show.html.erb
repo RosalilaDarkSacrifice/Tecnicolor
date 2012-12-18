@@ -1,46 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Numero:</b>
-  <%= @factura_efectivo.numero %>
-</p>
-
-<p>
-  <b>Fecha:</b>
-  <%= @factura_efectivo.fecha %>
-</p>
+<h2 style="text-align: center;">Tecnicolor</h2>
+<p style="text-align: center;">Bo.La Guardia,27 Cll,Ave.Nueva Orleans, San Pedro Sula, Honduras C.A. Tel.: 2556-5156</p>
+<p style="text-align: center;">R.T.N. 05019010294807</p>
+<div style="text-align: right;font-size: 20px;">
+		<%= @factura_efectivo.fecha %> &nbsp &nbsp - &nbsp &nbsp Efectivo &nbsp &nbsp - &nbsp &nbsp <%= @factura_efectivo.numero %>
+</div>
 
 <p>
   <b>Cliente:</b>
   <%= @factura_efectivo.cliente %>
 </p>
 
-<p>
-  <b>Direccion:</b>
-  <%= @factura_efectivo.direccion %>
-</p>
-
-<p>
-  <b>Anulada:</b>
-  <%= @factura_efectivo.anulada %>
-</p>
-
-<p>
-  <b>Subtotal:</b>
-  <%= @factura_efectivo.getSubtotal %>
-</p>
-
-<p>
-  <b>Total:</b>
-  <%= @factura_efectivo.getTotal %>
-</p>
-
-
-<br/>
-
-<h2>Productos</h2>
-
-<table>
+<table style="width: 600px;">
   <tr>
     <th>Producto</th>
     <th>Cantidad</th>
@@ -54,11 +26,32 @@
     <td><%= producto_factura_efectivo.precio %></td>
   </tr>
 <% end %>
+  <tr>
+    <td></td>
+    <td>Subtotal:</td>
+    <td><%= @factura_efectivo.getSubtotal %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>I.S.V:</td>
+    <td><%= @factura_efectivo.getISV %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><b>Total:</b></td>
+    <td><b><%= @factura_efectivo.getTotal %></b></td>
+  </tr>
 </table>
 
-<br />
-<br/>
-<br/>
 
-<%= link_to 'Anular', edit_factura_efectivo_path(@factura_efectivo) %> |
-<%= link_to 'Atras', factura_efectivos_path %>
+<div id="print-button">
+	<br/>
+	<br/>
+	<br/>
+		<a href="javascript:window.print()">Imprimir</a>
+	<br/>
+	<br/>
+	<br/>
+		<%= link_to 'Anular', edit_factura_efectivo_path(@factura_efectivo) %> |
+		<%= link_to 'Atras', factura_efectivos_path %>
+</div>
