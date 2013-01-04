@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Nombre</th>
+    <th>Tipo de reporte</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +12,7 @@
 <% @categoria.each do |categorium| %>
   <tr>
     <td><%= categorium.nombre %></td>
+    <td><%= categorium.tipo_reporte %></td>
     <td><%= link_to 'Mostrar', categorium %></td>
     <td><%= link_to 'Editar', edit_categorium_path(categorium) %></td>
     <td><%= link_to 'Borrar', categorium, method: :delete, data: { confirm: 'Are you sure?' } %></td>

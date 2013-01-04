@@ -1,0 +1,18 @@
+<h1>Reporte de productos unitarios</h1>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Categoria</th>
+    <th>Existencias</th>
+  </tr>
+
+<% @productos.each do |producto| %>
+  <tr>
+    <td><%= producto.nombre %></td>
+    <td><%= producto.descripcion %></td>
+    <td><%= producto.categorium.nombre %></td>
+    <td><%= producto.existencias %></td>
+  </tr>
+<% end %>
+</table>

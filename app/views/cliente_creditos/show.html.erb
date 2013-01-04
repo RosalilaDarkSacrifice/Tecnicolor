@@ -55,6 +55,31 @@
   <%= @cliente_credito.celular_ref_2 %>
 </p>
 
-
 <%= link_to 'Editar', edit_cliente_credito_path(@cliente_credito) %> |
 <%= link_to 'Atras', cliente_creditos_path %>
+
+<h2>Listado de Facturas en Creditos</h2>
+
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Numero</th>
+    <th>Cliente credito</th>
+    <th>Estado</th>
+    <th>Anulada</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cliente_credito.factura_creditos.each do |factura_credito| %>
+  <tr>
+    <td><%= factura_credito.fecha %></td>
+    <td><%= factura_credito.numero %></td>
+    <td><%= factura_credito.cliente_credito.nombre %></td>
+    <td><%= factura_credito.estado %></td>
+    <td><%= factura_credito.anulada %></td>
+    <td><%= link_to 'Mostrar', factura_credito %></td>
+    <td><%= link_to 'Editar', edit_factura_credito_path(factura_credito) %></td>
+  </tr>
+<% end %>
+</table>

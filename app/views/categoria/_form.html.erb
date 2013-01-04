@@ -15,6 +15,10 @@
     <%= f.label :nombre %><br />
     <%= f.text_field :nombre %>
   </div>
+  <div class="field">
+    <%= f.label :tipo_reporte %><br />
+    <%= f.select :tipo_reporte, ["unitario","galon"] %>
+  </div>
   <div class="actions">
     <%= f.submit "finalizar"%>
   </div>

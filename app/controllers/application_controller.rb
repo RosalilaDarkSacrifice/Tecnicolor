@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     end
 
     if arr.max==nil
-      return 0
+      return 7205
     else
       return arr.max+1
     end

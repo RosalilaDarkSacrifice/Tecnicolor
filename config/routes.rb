@@ -63,7 +63,8 @@ Tecnicolor::Application.routes.draw do
   get "/arqueo" => "reportes#arqueo", :as => "arqueo"
   get "/consultar_factura" => "reportes#consultar_factura", :as => "consultar_factura"
   get "/cuentas_por_cobrar" => "reportes#cuentas_por_cobrar", :as => "cuentas_por_cobrar"
-  get "/existencias_inventario" => "reportes#existencias_inventario", :as => "existencias_inventario"
+  get "/reporte_galones" => "reportes#reporte_galones", :as => "reporte_galones"
+  get "/reporte_unitario" => "reportes#reporte_unitario", :as => "reporte_unitario"
   get "/todos_los_productos" => "reportes#todos_los_productos", :as => "todos_los_productos"
 
   post "buscar_factura" => "reportes#buscar_factura", :as => :buscar_factura

@@ -13,7 +13,13 @@
 <% @salida_producto_mal_estados.each do |salida_producto_mal_estado| %>
   <tr>
     <td><%= salida_producto_mal_estado.fecha %></td>
-    <td><%= salida_producto_mal_estado.producto.nombre %></td>
+
+		<td>
+		<%if salida_producto_mal_estado.producto != nil%>
+    	<%= salida_producto_mal_estado.producto.nombre %>
+		<%end%>
+		</td>
+
     <td><%= salida_producto_mal_estado.cantidad %></td>
     <td><%= link_to 'Mostrar', salida_producto_mal_estado %></td>
     <td><%= link_to 'Editar', edit_salida_producto_mal_estado_path(salida_producto_mal_estado) %></td>

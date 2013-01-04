@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015174752) do
+ActiveRecord::Schema.define(:version => 20121227155755) do
 
   create_table "categoria", :force => true do |t|
     t.string   "nombre"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "tipo_reporte"
   end
 
   create_table "cliente_creditos", :force => true do |t|

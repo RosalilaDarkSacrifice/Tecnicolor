@@ -89,8 +89,8 @@ class ReportesController < ApplicationController
 		@cuentas_por_cobrar=FacturaCredito.all
 	end
 
-	def existencias_inventario
-		@categoria=Categorium.all
+	def reporte_galones
+		@categoria=Categorium.where(:tipo_reporte=>"galon")
 		@ingresos=[]
 		@transferencias=[]
 		@salidas=[]
@@ -167,6 +167,16 @@ class ReportesController < ApplicationController
 			@transferencias.push(transferencia)
 			@salidas.push(salida)
 			@ventas.push(venta)
+		end
+	end
+
+	def reporte_unitario
+		@categoria=Categorium.where(:tipo_reporte=>"unitario")
+		@productos=[]
+		@categoria.each do |c|
+			c.productos.each do |p|
+				@productos.push(p)
+			end
 		end
 	end
 

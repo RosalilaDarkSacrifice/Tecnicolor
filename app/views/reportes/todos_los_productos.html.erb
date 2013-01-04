@@ -16,7 +16,14 @@
   <tr>
     <td><%= producto.nombre %></td>
     <td><%= producto.descripcion %></td>
-    <td><%= producto.categorium.nombre %></td>
+
+    <td>
+		<%if producto.categorium!= nil %>
+			<%= producto.categorium.nombre %>
+		<% else %>
+			error
+		<% end %>
+		</td>
     <td><%= producto.precio_maximo %></td>
     <td><%= producto.precio_minimo %></td>
     <td><%= producto.existencias %></td>

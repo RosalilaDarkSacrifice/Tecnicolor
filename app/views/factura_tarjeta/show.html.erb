@@ -16,27 +16,32 @@
   <tr>
     <th>Producto</th>
     <th>Cantidad</th>
-    <th>Precio</th>
+    <th>Precio unitario</th>
+    <th>Subtotal</th>
   </tr>
 
 <% @factura_tarjetum.producto_factura_tarjeta.each do |producto_factura_tarjetum| %>
   <tr>
-    <td><%= producto_factura_tarjetum.producto.nombre %></td>
+    <td><%= producto_factura_tarjetum.producto.nombre + " - "+ producto_factura_tarjetum.producto.descripcion + " - " +producto_factura_tarjetum.producto.marca.nombre %></td>
     <td><%= producto_factura_tarjetum.cantidad %></td>
     <td><%= producto_factura_tarjetum.precio %></td>
+    <td><%= producto_factura_tarjetum.precio * producto_factura_tarjetum.cantidad %></td>
   </tr>
 <% end %>
   <tr>
+    <td></td>
     <td></td>
     <td>Subtotal:</td>
     <td><%= @factura_tarjetum.getSubtotal %></td>
   </tr>
   <tr>
     <td></td>
+    <td></td>
     <td>I.S.V:</td>
     <td><%= @factura_tarjetum.getISV %></td>
   </tr>
   <tr>
+    <td></td>
     <td></td>
     <td><b>Total:</b></td>
     <td><b><%= @factura_tarjetum.getTotal %></b></td>
