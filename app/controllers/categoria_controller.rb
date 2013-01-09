@@ -42,6 +42,10 @@ class CategoriaController < ApplicationController
   def create
     @categorium = Categorium.new(params[:categorium])
 
+		@categorium.entradas=0
+		@categorium.salidas=0
+		@categorium.ventas=0
+
     respond_to do |format|
       if @categorium.save
         format.html { redirect_to @categorium, notice: 'Categorium was successfully created.' }
