@@ -56,6 +56,10 @@ class FacturaChequesController < ApplicationController
 					p=p_cheque.producto
 					p.existencias-=p_cheque.cantidad
 					p.save
+
+					c=p_cheque.producto.categorium
+					c.ventas+=p_cheque.cantidad*p_cheque.producto.cantidad_galones
+					c.save
 				end
 
         format.html { redirect_to @factura_cheque, notice: 'Factura cheque was successfully created.' }

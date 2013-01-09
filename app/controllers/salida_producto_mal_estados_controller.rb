@@ -45,6 +45,10 @@ class SalidaProductoMalEstadosController < ApplicationController
     respond_to do |format|
       if @salida_producto_mal_estado.save
 
+				c=@salida_producto_mal_estado.producto.categorium
+				c.salidas+=@salida_producto_mal_estado.cantidad*@salida_producto_mal_estado.producto.cantidad_galones
+				c.save
+
 				p=@salida_producto_mal_estado.producto
 				p.existencias-=@salida_producto_mal_estado.cantidad
 				p.save

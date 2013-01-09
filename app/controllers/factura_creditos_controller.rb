@@ -56,6 +56,10 @@ class FacturaCreditosController < ApplicationController
 					p=p_credito.producto
 					p.existencias-=p_credito.cantidad
 					p.save
+
+					c=p_credito.producto.categorium
+					c.ventas+=p_credito.cantidad*p_credito.producto.cantidad_galones
+					c.save
 				end
 
         format.html { redirect_to @factura_credito, notice: 'Factura credito was successfully created.' }

@@ -91,6 +91,83 @@ class ReportesController < ApplicationController
 
 	def reporte_galones
 		@categoria=Categorium.where(:tipo_reporte=>"galon")
+		@ingresos=[]
+		@transferencias=[]
+		@salidas=[]
+		@ventas=[]
+		@categoria.each do |c|
+			ingreso=0
+			EntradaProducto.all.each do |p|
+				if (p.producto!=nil  && p.cantidad!=nil)
+					if(c.id==p.producto.categorium.id)
+						ingreso+=p.cantidad*p.producto.cantidad_galones
+					end
+				end
+			end
+
+			transferencia=0
+			TransferenciaInternaProducto.all.each do |p|
+				if (p.producto!=nil && p.cantidad!=nil)
+					if(c.id==p.categoria_id)
+						transferencia+=p.cantidad_galones
+					end
+				end
+			end
+
+
+			salida=0
+			SalidaProductoMalEstado.all.each do |p|
+				if (p.producto!=nil  && p.cantidad!=nil)
+					if(c.id==p.producto.categorium.id)
+						salida+=p.cantidad*p.producto.cantidad_galones
+					end
+				end
+			end
+
+
+			venta=0
+			ProductoFacturaCheque.all.each do |p|
+				if(p.factura_cheque!=nil && p.producto!=nil && p.cantidad!=nil)
+					if(!p.factura_cheque.anulada)
+						if(c.id==p.producto.categorium.id)
+							venta+=p.cantidad*p.producto.cantidad_galones
+						end
+					end
+				end
+			end
+			ProductoFacturaCredito.all.each do |p|
+				if(p.factura_credito!=nil && p.producto!=nil && p.cantidad!=nil)
+					if(!p.factura_credito.anulada)
+						if(c.id==p.producto.categorium.id)
+							venta+=p.cantidad*p.producto.cantidad_galones
+						end
+					end
+				end
+			end
+			ProductoFacturaEfectivo.all.each do |p|
+				if(p.factura_efectivo!=nil && p.producto!=nil && p.cantidad!=nil)
+					if(!p.factura_efectivo.anulada)
+						if(c.id==p.producto.categorium.id)
+							venta+=p.cantidad*p.producto.cantidad_galones
+						end
+					end
+				end
+			end
+			ProductoFacturaTarjetum.all.each do |p|
+				if(p.factura_tarjetum!=nil && p.producto!=nil && p.cantidad!=nil)
+					if(!p.factura_tarjetum.anulada)
+						if(c.id==p.producto.categorium.id)
+							venta+=p.cantidad*p.producto.cantidad_galones
+						end
+					end
+				end
+			end
+
+			@ingresos.push(ingreso)
+			@transferencias.push(transferencia)
+			@salidas.push(salida)
+			@ventas.push(venta)
+		end
 	end
 
 	def reporte_unitario

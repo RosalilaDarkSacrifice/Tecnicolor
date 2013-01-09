@@ -56,6 +56,10 @@ class FacturaEfectivosController < ApplicationController
 					p=p_efectivo.producto
 					p.existencias-=p_efectivo.cantidad
 					p.save
+
+					c=p_efectivo.producto.categorium
+					c.ventas+=p_efectivo.cantidad*p_efectivo.producto.cantidad_galones
+					c.save
 				end
 
         format.html { redirect_to @factura_efectivo, notice: 'Factura efectivo was successfully created.' }

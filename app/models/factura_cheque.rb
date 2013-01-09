@@ -10,7 +10,7 @@ class FacturaCheque < ActiveRecord::Base
 				res=res+((p.precio*100.0).round/100.0)*((p.cantidad*100.0).round/100.0)
 			end
 		end
-		return res
+		return (res*100.0).round/100.0
 	end
 
 	def getTotal

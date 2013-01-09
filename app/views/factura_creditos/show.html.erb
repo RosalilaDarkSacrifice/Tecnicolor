@@ -1,65 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h2 style="text-align: center;">Tecnicolor</h2>
-<p style="text-align: center;">Bo.La Guardia,27 Cll,Ave.Nueva Orleans, San Pedro Sula, Honduras C.A. Tel.: 2556-5156</p>
-<p style="text-align: center;">R.T.N. 05019010294807</p>
-<div style="text-align: right;font-size: 20px;">
-		<%= @factura_credito.fecha %> &nbsp &nbsp - &nbsp &nbsp Credito &nbsp &nbsp - &nbsp &nbsp <%= @factura_credito.numero %>
-</div>
-
-<p>
-  <b>Cliente credito:</b>
-  <%= @factura_credito.cliente_credito.nombre %>
-</p>
-
-
-<table style="width: 600px;">
-  <tr>
-    <th>Producto</th>
-    <th>Cantidad</th>
-    <th>Precio unitario</th>
-    <th>Subtotal</th>
-  </tr>
-
-<% @factura_credito.producto_factura_creditos.each do |producto_factura_credito| %>
-  <tr>
-    <td><%= producto_factura_credito.producto.nombre+ " - "+ producto_factura_credito.producto.descripcion + " - " +producto_factura_credito.producto.marca.nombre %></td>
-    <td><%= producto_factura_credito.cantidad %></td>
-    <td><%= producto_factura_credito.precio %></td>
-    <td><%= producto_factura_credito.precio * producto_factura_credito.cantidad %></td>
-  </tr>
-<% end %>
-  <tr>
-    <td></td>
-    <td></td>
-    <td>Subtotal:</td>
-    <td><%= @factura_credito.getSubtotal %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td>I.S.V:</td>
-    <td><%= @factura_credito.getISV %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td><b>Total:</b></td>
-    <td><b><%= @factura_credito.getTotal %></b></td>
-  </tr>
-</table>
-
 <div id="print-button">
+		<a style="font-size:20pt;line-height:25pt;" href="javascript:window.print()">Imprimir</a>
+	<br/>
+	<br/>
+	<br/>
+		<%= link_to 'Editar', edit_factura_credito_path(@factura_credito) %> |
+		<%= link_to 'Atras', factura_creditos_path %>
+
 
 	<p>
 		<b>Estado:</b>
 		<%= @factura_credito.estado %>
 	</p>
-
-
-	<br />
-
-
 	<h2>Listado de pago en cheques</h2>
 
 
@@ -153,18 +106,56 @@
 	<% end %>
 	</table>
 	<%= link_to 'Pagar en tarjeta', pagar_tarjeta_path(:id => @factura_credito.id) %>
-
-
-
-
-
 	<br/>
 	<br/>
 	<br/>
-		<a href="javascript:window.print()">Imprimir</a>
-	<br/>
-	<br/>
-	<br/>
-		<%= link_to 'Editar', edit_factura_credito_path(@factura_credito) %> |
-		<%= link_to 'Atras', factura_creditos_path %>
 </div>
+
+<h2 style="text-align: center;">Tecnicolor</h2>
+<p style="text-align: center;">Bo.La Guardia,27 Cll,Ave.Nueva Orleans, San Pedro Sula, Honduras C.A. Tel.: 2556-5156</p>
+<p style="text-align: center;">R.T.N. 05019010294807</p>
+<div style="text-align: right;font-size: 20px;">
+		<%= @factura_credito.fecha %> &nbsp &nbsp - &nbsp &nbsp Credito &nbsp &nbsp - &nbsp &nbsp <%= @factura_credito.numero %>
+</div>
+
+<p>
+  <b>Cliente credito:</b>
+  <%= @factura_credito.cliente_credito.nombre %>
+</p>
+
+
+<table style="width: 600px;">
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio unitario</th>
+    <th>Subtotal</th>
+  </tr>
+
+<% @factura_credito.producto_factura_creditos.each do |producto_factura_credito| %>
+  <tr>
+    <td><%= producto_factura_credito.producto.nombre+ " - "+ producto_factura_credito.producto.descripcion %></td>
+    <td><%= producto_factura_credito.cantidad %></td>
+    <td><%= producto_factura_credito.precio %></td>
+    <td><%= (((producto_factura_credito.precio * producto_factura_credito.cantidad)*100.0).round)/100.0 %></td>
+  </tr>
+<% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>Subtotal:</td>
+    <td><%= @factura_credito.getSubtotal %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>I.S.V:</td>
+    <td><%= @factura_credito.getISV %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><b>Total:</b></td>
+    <td><b><%= @factura_credito.getTotal %></b></td>
+  </tr>
+</table>

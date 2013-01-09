@@ -1,5 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<div id="print-button">
+	<br/>
+	<br/>
+	<br/>
+		<a style="font-size:20pt;line-height:25pt;"  href="javascript:window.print()">Imprimir</a>
+	<br/>
+	<br/>
+	<br/>
+		<%= link_to 'Anular', edit_factura_tarjetum_path(@factura_tarjetum) %> |
+		<%= link_to 'Atras', factura_tarjeta_path %>
+	<br/>
+	<br/>
+	<br/>
+</div>
+
 <h2 style="text-align: center;">Tecnicolor</h2>
 <p style="text-align: center;">Bo.La Guardia,27 Cll,Ave.Nueva Orleans, San Pedro Sula, Honduras C.A. Tel.: 2556-5156</p>
 <p style="text-align: center;">R.T.N. 05019010294807</p>
@@ -22,10 +37,10 @@
 
 <% @factura_tarjetum.producto_factura_tarjeta.each do |producto_factura_tarjetum| %>
   <tr>
-    <td><%= producto_factura_tarjetum.producto.nombre + " - "+ producto_factura_tarjetum.producto.descripcion + " - " +producto_factura_tarjetum.producto.marca.nombre %></td>
+    <td><%= producto_factura_tarjetum.producto.nombre + " - "+ producto_factura_tarjetum.producto.descripcion %></td>
     <td><%= producto_factura_tarjetum.cantidad %></td>
     <td><%= producto_factura_tarjetum.precio %></td>
-    <td><%= producto_factura_tarjetum.precio * producto_factura_tarjetum.cantidad %></td>
+    <td><%= (((producto_factura_tarjetum.precio * producto_factura_tarjetum.cantidad)*100.0).round)/100.0 %></td>
   </tr>
 <% end %>
   <tr>
@@ -47,16 +62,3 @@
     <td><b><%= @factura_tarjetum.getTotal %></b></td>
   </tr>
 </table>
-
-
-<div id="print-button">
-	<br/>
-	<br/>
-	<br/>
-		<a href="javascript:window.print()">Imprimir</a>
-	<br/>
-	<br/>
-	<br/>
-		<%= link_to 'Anular', edit_factura_tarjetum_path(@factura_tarjetum) %> |
-		<%= link_to 'Atras', factura_tarjeta_path %>
-</div>

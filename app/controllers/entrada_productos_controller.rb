@@ -49,6 +49,11 @@ class EntradaProductosController < ApplicationController
 				p.existencias+=@entrada_producto.cantidad
 				p.save
 
+				c=@entrada_producto.producto.categorium
+				c.entradas+=@entrada_producto.cantidad*@entrada_producto.producto.cantidad_galones
+				c.save
+				
+
         format.html { redirect_to @entrada_producto, notice: 'Entrada producto was successfully created.' }
         format.json { render json: @entrada_producto, status: :created, location: @entrada_producto }
       else

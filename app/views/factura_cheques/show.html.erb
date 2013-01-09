@@ -1,5 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<div id="print-button">
+	<br/>
+	<br/>
+	<br/>
+		<a style="font-size:20pt;line-height:25pt;"  href="javascript:window.print()">Imprimir</a>
+	<br/>
+	<br/>
+	<br/>
+		<%= link_to 'Anular', edit_factura_cheque_path(@factura_cheque) %> |
+		<%= link_to 'Atras', factura_cheques_path %>
+	<br/>
+	<br/>
+	<br/>
+</div>
+
+
 <h2 style="text-align: center;">Tecnicolor</h2>
 <p style="text-align: center;">Bo.La Guardia,27 Cll,Ave.Nueva Orleans, San Pedro Sula, Honduras C.A. Tel.: 2556-5156</p>
 <p style="text-align: center;">R.T.N. 05019010294807</p>
@@ -30,10 +46,10 @@
 
 <% @factura_cheque.producto_factura_cheques.each do |producto_factura_cheque| %>
   <tr>
-    <td><%= producto_factura_cheque.producto.nombre+ " - "+ producto_factura_cheque.producto.descripcion + " - " +producto_factura_cheque.producto.marca.nombre %></td>
+    <td><%= producto_factura_cheque.producto.nombre+ " - "+ producto_factura_cheque.producto.descripcion %></td>
     <td><%= producto_factura_cheque.cantidad %></td>
     <td><%= producto_factura_cheque.precio %></td>
-    <td><%= producto_factura_cheque.precio*producto_factura_cheque.cantidad %></td>
+    <td><%= (((producto_factura_cheque.precio * producto_factura_cheque.cantidad)*100.0).round)/100.0 %></td>
   </tr>
 <% end %>
   <tr>
@@ -55,15 +71,3 @@
     <td><b><%= @factura_cheque.getTotal %></b></td>
   </tr>
 </table>
-
-<div id="print-button">
-	<br/>
-	<br/>
-	<br/>
-		<a href="javascript:window.print()">Imprimir</a>
-	<br/>
-	<br/>
-	<br/>
-		<%= link_to 'Anular', edit_factura_cheque_path(@factura_cheque) %> |
-		<%= link_to 'Atras', factura_cheques_path %>
-</div>

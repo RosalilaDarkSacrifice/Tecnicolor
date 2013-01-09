@@ -1,0 +1,37 @@
+<%= form_for(@categorium) do |f| %>
+  <% if @categorium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@categorium.errors.count, "error") %> prohibited this categorium from being saved:</h2>
+
+      <ul>
+      <% @categorium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :entradas %><br />
+    <%= f.text_field :entradas %>
+  </div>
+  <div class="field">
+    <%= f.label :salidas %><br />
+    <%= f.text_field :salidas %>
+  </div>
+  <div class="field">
+    <%= f.label :ventas %><br />
+    <%= f.text_field :ventas %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_reporte %><br />
+    <%= f.select :tipo_reporte, ["unitario","galon"] %>
+  </div>
+  <div class="actions">
+    <%= f.submit "finalizar"%>
+  </div>
+<% end %>

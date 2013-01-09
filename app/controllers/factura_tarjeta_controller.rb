@@ -56,6 +56,10 @@ class FacturaTarjetaController < ApplicationController
 					p=p_tarjetum.producto
 					p.existencias-=p_tarjetum.cantidad
 					p.save
+
+					c=p_tarjetum.producto.categorium
+					c.ventas+=p_tarjetum.cantidad*p_tarjetum.producto.cantidad_galones
+					c.save
 				end
 
         format.html { redirect_to @factura_tarjetum, notice: 'Factura tarjetum was successfully created.' }

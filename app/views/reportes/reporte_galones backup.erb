@@ -18,6 +18,11 @@
     <td><%= categorium.salidas %></td>
     <td><%= categorium.ventas %></td>
     <td><%= categorium.entradas-categorium.salidas-categorium.ventas %></td>
+    <td><%= @ingresos[i] %></td>
+    <!--<td><%= @transferencias[i] %></td>-->
+    <td><%= @salidas[i] %></td>
+    <td><%= @ventas[i] %></td>
+    <td><%= (@ingresos[i]*100 + @transferencias[i]*100 - @salidas[i]*100 - @ventas[i]*100)/100 %></td>
   </tr>
 <%i+=1%>
 <% end %>
