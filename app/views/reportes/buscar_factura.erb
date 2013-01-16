@@ -20,19 +20,19 @@ $('#tabla_cheques').append("<tr>"+
 									<% if p.anulada %>
 										"<td>Anulada</td>"+
 									<% else %>
-				            "<td><%=p.getTotal%></td>"+
+				            "<td><%=p.getTotal.ceil%>.00</td>"+
 									<% end %>
 			            "<td><a href=\"/factura_cheques/<%=p.id%>\">Mostrar</a></td>"+
 			            "</tr>");
 	<% if !p.anulada %>
-		<%total+=p.getTotal%>
+		<%total+=p.getTotal.ceil%>
 	<% end %>
 <%end%>
 $('#tabla_cheques').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
-		            "<td><b><%=total%></b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
 
@@ -60,19 +60,19 @@ $('#tabla_creditos').append("<tr>"+
 									<% if p.anulada %>
 										"<td>Anulada</td>"+
 									<% else %>
-				            "<td><%=p.getTotal%></td>"+
+				            "<td><%=p.getTotal.ceil%>.00</td>"+
 									<% end %>
 			            "<td><a href=\"/factura_creditos/<%=p.id%>\">Mostrar</a></td>"+
 			            "</tr>");
 	<% if !p.anulada %>
-		<%total+=p.getTotal%>
+		<%total+=p.getTotal.ceil%>
 	<% end %>
 <%end%>
 $('#tabla_creditos').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
-		            "<td><b><%=total%></b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
 
@@ -103,19 +103,19 @@ $('#tabla_efectivos').append("<tr>"+
 									<% if p.anulada %>
 										"<td>Anulada</td>"+
 									<% else %>
-				            "<td><%=p.getTotal%></td>"+
+				            "<td><%=p.getTotal.ceil%>.00</td>"+
 									<% end %>
 			            "<td><a href=\"/factura_efectivos/<%=p.id%>\">Mostrar</a></td>"+
 			            "</tr>");
 	<% if !p.anulada %>
-		<%total+=p.getTotal%>
+		<%total+=p.getTotal.ceil%>
 	<% end %>
 <%end%>
 $('#tabla_efectivos').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
-		            "<td><b><%=total%></b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
 
@@ -147,18 +147,18 @@ $('#tabla_tarjeta').append("<tr>"+
 									<% if p.anulada %>
 										"<td>Anulada</td>"+
 									<% else %>
-				            "<td><%=p.getTotal%></td>"+
+				            "<td><%=p.getTotal.ceil%>.00</td>"+
 									<% end %>
 			            "<td><a href=\"/factura_tarjeta/<%=p.id%>\">Mostrar</a></td>"+
 			            "</tr>");
 	<% if !p.anulada %>
-		<%total+=p.getTotal%>
+		<%total+=p.getTotal.ceil%>
 	<% end %>
 <%end%>
 $('#tabla_tarjeta').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
-		            "<td><b><%=total%></b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
