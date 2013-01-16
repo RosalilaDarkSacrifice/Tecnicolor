@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109195114) do
+ActiveRecord::Schema.define(:version => 20130116194123) do
 
   create_table "categoria", :force => true do |t|
     t.string   "nombre"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130109195114) do
     t.boolean  "anulada"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "observaciones"
   end
 
   create_table "factura_creditos", :force => true do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20130109195114) do
     t.boolean  "anulada"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "observaciones"
   end
 
   create_table "factura_efectivos", :force => true do |t|
@@ -76,8 +78,9 @@ ActiveRecord::Schema.define(:version => 20130109195114) do
     t.string   "cliente"
     t.string   "direccion"
     t.boolean  "anulada"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "observaciones"
   end
 
   create_table "factura_tarjeta", :force => true do |t|
@@ -86,8 +89,9 @@ ActiveRecord::Schema.define(:version => 20130109195114) do
     t.string   "cliente"
     t.string   "direccion"
     t.boolean  "anulada"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "observaciones"
   end
 
   create_table "marcas", :force => true do |t|

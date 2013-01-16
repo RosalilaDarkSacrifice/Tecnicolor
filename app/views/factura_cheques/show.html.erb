@@ -49,7 +49,11 @@
     <td><%= producto_factura_cheque.producto.nombre+ " - "+ producto_factura_cheque.producto.descripcion %></td>
     <td><%= producto_factura_cheque.cantidad %></td>
     <td><%= producto_factura_cheque.precio %></td>
-    <td><%= (((producto_factura_cheque.precio * producto_factura_cheque.cantidad)*100.0).round)/100.0 %></td>
+		<% if producto_factura_cheque.cantidad != nil && producto_factura_cheque.precio != nil%>
+	    <td><%= (((producto_factura_cheque.precio * producto_factura_cheque.cantidad)*100.0).round)/100.0 %></td>
+		<% else %>
+	    <td>Error: Nulo</td>
+		<% end %>
   </tr>
 <% end %>
   <tr>
@@ -62,12 +66,16 @@
     <td></td>
     <td></td>
     <td>I.S.V:</td>
-    <td><%= @factura_cheque.getISV %></td>
+    <td><%= ((@factura_cheque.getTotal.ceil-@factura_cheque.getSubtotal)*100.0).round/100.0 %></td>
   </tr>
   <tr>
     <td></td>
     <td></td>
     <td><b>Total:</b></td>
-    <td><b><%= @factura_cheque.getTotal %></b></td>
+    <td><b><%= @factura_cheque.getTotal.ceil %>.00</b></td>
   </tr>
 </table>
+
+<% if @factura_cheque.observaciones != "" && @factura_cheque.observaciones != nil %>
+	<%="Observaciones: "+@factura_cheque.observaciones%>
+<% end %>

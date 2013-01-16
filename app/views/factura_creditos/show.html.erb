@@ -5,7 +5,7 @@
 	<br/>
 	<br/>
 	<br/>
-		<%= link_to 'Editar', edit_factura_credito_path(@factura_credito) %> |
+		<%= link_to 'Anular', edit_factura_credito_path(@factura_credito) %> |
 		<%= link_to 'Atras', factura_creditos_path %>
 
 
@@ -137,7 +137,11 @@
     <td><%= producto_factura_credito.producto.nombre+ " - "+ producto_factura_credito.producto.descripcion %></td>
     <td><%= producto_factura_credito.cantidad %></td>
     <td><%= producto_factura_credito.precio %></td>
-    <td><%= (((producto_factura_credito.precio * producto_factura_credito.cantidad)*100.0).round)/100.0 %></td>
+		<% if producto_factura_credito.cantidad != nil && producto_factura_credito.precio != nil%>
+    	<td><%= (((producto_factura_credito.precio * producto_factura_credito.cantidad)*100.0).round)/100.0 %></td>
+		<% else %>
+	    <td>Error: Nulo</td>
+		<% end %>
   </tr>
 <% end %>
   <tr>
@@ -150,12 +154,16 @@
     <td></td>
     <td></td>
     <td>I.S.V:</td>
-    <td><%= @factura_credito.getISV %></td>
+    <td><%= ((@factura_credito.getTotal.ceil-@factura_credito.getSubtotal)*100.0).round/100.0 %></td>
   </tr>
   <tr>
     <td></td>
     <td></td>
     <td><b>Total:</b></td>
-    <td><b><%= @factura_credito.getTotal %></b></td>
+    <td><b><%= @factura_credito.getTotal.ceil %>.00</b></td>
   </tr>
 </table>
+
+<% if @factura_credito.observaciones != "" && @factura_credito.observaciones != nil %>
+	<%="Observaciones: "+@factura_credito.observaciones%>
+<% end %>

@@ -1,5 +1,5 @@
 class FacturaTarjetum < ActiveRecord::Base
-  attr_accessible :anulada, :cliente, :direccion, :fecha, :numero
+  attr_accessible :anulada, :cliente, :direccion, :fecha, :numero, :observaciones
   has_many :producto_factura_tarjeta
 
 	def getSubtotal

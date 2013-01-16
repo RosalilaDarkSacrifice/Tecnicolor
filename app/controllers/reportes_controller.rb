@@ -56,6 +56,10 @@ class ReportesController < ApplicationController
 		mes=params[:mes]
 		dia=params[:dia]
 
+		@anio=anio
+		@mes=mes
+		@dia=dia
+
 		numero_lleno = numero!=""
 		fecha_llena	=	anio!="---" && mes!="---" && dia!="---"
 

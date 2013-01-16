@@ -1,5 +1,5 @@
 class FacturaCredito < ActiveRecord::Base
-  attr_accessible :anulada, :cliente_credito_id, :estado, :fecha, :numero
+  attr_accessible :anulada, :cliente_credito_id, :estado, :fecha, :numero, :observaciones
   has_many :pago_cheques
   has_many :pago_efectivos
   has_many :pago_tarjeta

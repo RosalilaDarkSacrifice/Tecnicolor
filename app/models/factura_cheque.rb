@@ -1,5 +1,5 @@
 class FacturaCheque < ActiveRecord::Base
-  attr_accessible :anulada, :banco, :cliente, :direccion, :fecha, :numero, :numero_cheque
+  attr_accessible :anulada, :banco, :cliente, :direccion, :fecha, :numero, :numero_cheque, :observaciones
   has_many :producto_factura_cheques
 
 	def getSubtotal
