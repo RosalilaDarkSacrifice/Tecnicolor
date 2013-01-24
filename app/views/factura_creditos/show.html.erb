@@ -8,6 +8,9 @@
 		<%= link_to 'Anular', edit_factura_credito_path(@factura_credito) %> |
 		<%= link_to 'Atras', factura_creditos_path %>
 
+	<h2>Total: <%= @factura_credito.getTotal.ceil %></h2>
+	<h2>Pagos: <%= @factura_credito.getTotalPagos %></h2>
+	<h2>Saldo: <%= @factura_credito.getSaldo %></h2>
 
 	<p>
 		<b>Estado:</b>
@@ -18,26 +21,30 @@
 
 	<table>
 		<tr>
-		  <th>Numero factura credito</th>
+		  <th>#Pago</th>
+		  <th>#Factura</th>
 		  <th>Fecha</th>
-		  <th>Numero</th>
 		  <th>Anulada</th>
-		  <th>Monto</th>
 		  <th>Banco</th>
-		  <th>Numero cheque</th>
+		  <th>#Cheque</th>
+		  <th>Monto</th>
 		  <th></th>
 		  <th></th>
 		</tr>
 
 	<% @factura_credito.pago_cheques.each do |pago_cheque| %>
 		<tr>
+		  <td><%= pago_cheque.numero %></td>
 		  <td><%= pago_cheque.factura_credito.numero %></td>
 		  <td><%= pago_cheque.fecha %></td>
-		  <td><%= pago_cheque.numero %></td>
-		  <td><%= pago_cheque.anulada %></td>
-		  <td><%= pago_cheque.monto %></td>
+			<% if pago_cheque.anulada %>
+			  <td>si</td>
+			<% else %>
+			  <td>no</td>
+			<% end %>
 		  <td><%= pago_cheque.banco %></td>
 		  <td><%= pago_cheque.numero_cheque %></td>
+		  <td><%= pago_cheque.monto %></td>
 		  <td><%= link_to 'Mostrar', pago_cheque %></td>
 		  <td><%= link_to 'Anular', edit_pago_cheque_path(pago_cheque) %></td>
 		</tr>
@@ -53,9 +60,9 @@
 
 	<table>
 		<tr>
-		  <th>Numero factura credito</th>
+		  <th>#Pago</th>
+		  <th>#Factura</th>
 		  <th>Fecha</th>
-		  <th>Numero</th>
 		  <th>Anulada</th>
 		  <th>Monto</th>
 		  <th></th>
@@ -65,10 +72,14 @@
 
 	<% @factura_credito.pago_efectivos.each do |pago_efectivo| %>
 		<tr>
+		  <td><%= pago_efectivo.numero %></td>
 		  <td><%= pago_efectivo.factura_credito.numero %></td>
 		  <td><%= pago_efectivo.fecha %></td>
-		  <td><%= pago_efectivo.numero %></td>
-		  <td><%= pago_efectivo.anulada %></td>
+			<% if pago_efectivo.anulada %>
+			  <td>si</td>
+			<% else %>
+			  <td>no</td>
+			<% end %>
 		  <td><%= pago_efectivo.monto %></td>
 		  <td><%= link_to 'Mostrar', pago_efectivo %></td>
 		  <td><%= link_to 'Anular', edit_pago_efectivo_path(pago_efectivo) %></td>
@@ -84,9 +95,9 @@
 
 	<table>
 		<tr>
-		  <th>Numero factura credito</th>
+		  <th>#Pago</th>
+		  <th>#Factura</th>
 		  <th>Fecha</th>
-		  <th>Numero</th>
 		  <th>Anulada</th>
 		  <th>Monto</th>
 		  <th></th>
@@ -95,10 +106,14 @@
 
 	<% @factura_credito.pago_tarjeta.each do |pago_tarjetum| %>
 		<tr>
+		  <td><%= pago_tarjetum.numero %></td>
 		  <td><%= pago_tarjetum.factura_credito.numero %></td>
 		  <td><%= pago_tarjetum.fecha %></td>
-		  <td><%= pago_tarjetum.numero %></td>
-		  <td><%= pago_tarjetum.anulada %></td>
+			<% if pago_tarjetum.anulada %>
+			  <td>si</td>
+			<% else %>
+			  <td>no</td>
+			<% end %>
 		  <td><%= pago_tarjetum.monto %></td>
 		  <td><%= link_to 'Mostrar', pago_tarjetum %></td>
 		  <td><%= link_to 'Anular', edit_pago_tarjetum_path(pago_tarjetum) %></td>

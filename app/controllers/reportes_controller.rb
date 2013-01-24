@@ -82,6 +82,10 @@ class ReportesController < ApplicationController
 			@factura_creditos = FacturaCredito.find(:all,:conditions => ["fecha = ?",anio+"-"+mes+"-"+dia])
 			@factura_cheques = FacturaCheque.find(:all,:conditions => ["fecha = ?",anio+"-"+mes+"-"+dia])
 			@factura_tarjeta = FacturaTarjetum.find(:all,:conditions => ["fecha = ?",anio+"-"+mes+"-"+dia])
+
+			@pagos_efectivo = PagoEfectivo.find(:all,:conditions => ["fecha = ?",anio+"-"+mes+"-"+dia])
+			@pagos_cheque = PagoCheque.find(:all,:conditions => ["fecha = ?",anio+"-"+mes+"-"+dia])
+			@pagos_tarjetum = PagoTarjetum.find(:all,:conditions => ["fecha = ?",anio+"-"+mes+"-"+dia])
 		end
 
     respond_to do |format|

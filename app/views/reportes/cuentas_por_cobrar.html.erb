@@ -6,7 +6,6 @@
     <th>Numero</th>
     <th>Cliente credito</th>
     <th>Estado</th>
-    <th>Anulada</th>
     <th>Venta total</th>
     <th>Pagos total</th>
     <th>Saldo</th>
@@ -14,16 +13,15 @@
   </tr>
 
 <% @cuentas_por_cobrar.each do |factura_credito| %>
-<% if (factura_credito.getTotal - factura_credito.getTotalPagos > 0) %>
+<% if (factura_credito.getSaldo > 0) && factura_credito.anulada!=true%>
   <tr>
     <td><%= factura_credito.fecha %></td>
     <td><%= factura_credito.numero %></td>
-    <td><%= factura_credito.cliente_credito_id %></td>
+    <td><%= factura_credito.cliente_credito.nombre %></td>
     <td><%= factura_credito.estado %></td>
-    <td><%= factura_credito.anulada %></td>
-		<td><%= factura_credito.getTotal %></td>
+		<td><%= factura_credito.getTotal.ceil %>.00</td>
 		<td><%= factura_credito.getTotalPagos %></td>
-		<td><%= factura_credito.getTotal - factura_credito.getTotalPagos %></td>
+		<td><%= factura_credito.getSaldo %></td>
     <td><%= link_to 'Mostrar', factura_credito %></td>
     <td><%= link_to 'Editar', edit_factura_credito_path(factura_credito) %></td>
   </tr>

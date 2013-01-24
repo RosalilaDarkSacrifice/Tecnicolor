@@ -41,6 +41,7 @@ class PagoChequesController < ApplicationController
   # POST /pago_cheques.json
   def create
     @pago_cheque = PagoCheque.new(params[:pago_cheque])
+		@pago_cheque.numero=sigNumPago
 
     respond_to do |format|
       if @pago_cheque.save

@@ -41,6 +41,8 @@ class PagoEfectivosController < ApplicationController
   # POST /pago_efectivos.json
   def create
     @pago_efectivo = PagoEfectivo.new(params[:pago_efectivo])
+		@pago_efectivo.numero=sigNumPago
+
     respond_to do |format|
       if @pago_efectivo.save
         format.html { redirect_to @pago_efectivo, notice: 'Pago efectivo was successfully created.' }

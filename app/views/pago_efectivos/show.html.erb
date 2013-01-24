@@ -9,7 +9,7 @@
   <b>Fecha:</b>
   <%= @pago_efectivo.fecha %>
 </p>
-
+<!--
 <p>
   <b>Numero:</b>
   <%= @pago_efectivo.numero %>
@@ -19,7 +19,7 @@
   <b>Anulada:</b>
   <%= @pago_efectivo.anulada %>
 </p>
-
+-->
 <p>
   <b>Monto:</b>
   <%= @pago_efectivo.monto %>
@@ -27,4 +27,4 @@
 
 
 <%= link_to 'Editar', edit_pago_efectivo_path(@pago_efectivo) %> |
-<%= link_to 'Atras', @pago_efectivo.factura_credito %>
+<%= link_to 'Ver factura', @pago_efectivo.factura_credito %>

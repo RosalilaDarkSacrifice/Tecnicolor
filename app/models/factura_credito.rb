@@ -32,15 +32,24 @@ class FacturaCredito < ActiveRecord::Base
 	def getTotalPagos
 		res=0
 		pago_cheques.each do |p|
-			res+=p.monto
+			if p.anulada!=true
+				res+=p.monto
+			end
 		end
 		pago_efectivos.each do |p|
-			res+=p.monto
+			if p.anulada!=true
+				res+=p.monto
+			end
 		end
 		pago_tarjeta.each do |p|
-			res+=p.monto
+			if p.anulada!=true
+				res+=p.monto
+			end
 		end
 		return res
 	end
 
+	def getSaldo
+		return getTotal.ceil-getTotalPagos
+	end
 end

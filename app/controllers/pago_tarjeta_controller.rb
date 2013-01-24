@@ -41,6 +41,7 @@ class PagoTarjetaController < ApplicationController
   # POST /pago_tarjeta.json
   def create
     @pago_tarjetum = PagoTarjetum.new(params[:pago_tarjetum])
+		@pago_tarjetum.numero=sigNumPago
 
     respond_to do |format|
       if @pago_tarjetum.save

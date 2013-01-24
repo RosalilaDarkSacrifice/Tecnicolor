@@ -31,6 +31,25 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def sigNumPago
+    arr=[]
+    if PagoCheque.last!=nil
+      arr.push(PagoCheque.last.numero)
+    end
+    if PagoEfectivo.last!=nil
+      arr.push(PagoEfectivo.last.numero)
+    end
+    if PagoTarjetum.last!=nil
+      arr.push(PagoTarjetum.last.numero)
+    end
+
+    if arr.max==nil
+      return 1
+    else
+      return arr.max+1
+    end
+  end
+
 	def buscarProducto nombre_p, descripcion_p, categoria_p, marca_p
 		@nombre=nombre_p
     @descripcion=descripcion_p

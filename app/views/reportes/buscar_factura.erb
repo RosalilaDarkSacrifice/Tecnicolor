@@ -162,3 +162,157 @@ $('#tabla_tarjeta').append("<tr>"+
 		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
+
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_cheque tr').remove();
+
+$('#tabla_pagos_cheque').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Pago</th>"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>#Cheque</th>"+
+    "<th>Banco</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total=0%>
+<%@pagos_cheque.each do |p|%>
+	$('#tabla_pagos_cheque').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.factura_credito.numero%></td>"+
+			            "<td><%=p.factura_credito.cliente_credito.nombre%></td>"+
+			            "<td><%=p.numero_cheque%></td>"+
+			            "<td><%=p.banco%></td>"+
+									<% if p.factura_credito.anulada != true %>
+										<% if p.anulada!=true %>
+					            "<td><%=p.monto%></td>"+
+											<%total+=p.monto%>
+										<% else %>
+					            "<td>pago anulado</td>"+
+										<% end %>
+									<% else %>
+				            "<td>Factura anulada</td>"+
+									<% end %>
+			            "</tr>");
+<%end%>
+
+$('#tabla_pagos_cheque').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%></b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_efectivo tr').remove();
+
+$('#tabla_pagos_efectivo').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Pago</th>"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total=0%>
+<%@pagos_efectivo.each do |p|%>
+	$('#tabla_pagos_efectivo').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.factura_credito.numero%></td>"+
+			            "<td><%=p.factura_credito.cliente_credito.nombre%></td>"+
+									<% if p.factura_credito.anulada != true %>
+										<% if p.anulada!=true %>
+					            "<td><%=p.monto%></td>"+
+											<%total+=p.monto%>
+										<% else %>
+					            "<td>pago anulado</td>"+
+										<% end %>
+									<% else %>
+				            "<td>Factura anulada</td>"+
+									<% end %>
+			            "</tr>");
+<%end%>
+$('#tabla_pagos_efectivo').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%></b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_tarjeta tr').remove();
+
+$('#tabla_pagos_tarjeta').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Pago</th>"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total=0%>
+<%@pagos_tarjetum.each do |p|%>
+	$('#tabla_pagos_tarjeta').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.factura_credito.numero%></td>"+
+			            "<td><%=p.factura_credito.cliente_credito.nombre%></td>"+
+									<% if p.factura_credito.anulada != true %>
+										<% if p.anulada!=true %>
+					            "<td><%=p.monto%></td>"+
+											<%total+=p.monto%>
+										<% else %>
+					            "<td>pago anulado</td>"+
+										<% end %>
+									<% else %>
+				            "<td>Factura anulada</td>"+
+									<% end %>
+			            "</tr>");
+<%end%>
+$('#tabla_pagos_tarjeta').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%></b></td>"+
+		            "<td></td>"+
+		            "</tr>");

@@ -9,7 +9,7 @@
   <b>Fecha:</b>
   <%= @pago_cheque.fecha %>
 </p>
-
+<!--
 <p>
   <b>Numero:</b>
   <%= @pago_cheque.numero %>
@@ -19,7 +19,7 @@
   <b>Anulada:</b>
   <%= @pago_cheque.anulada %>
 </p>
-
+-->
 <p>
   <b>Monto:</b>
   <%= @pago_cheque.monto %>
@@ -37,4 +37,4 @@
 
 
 <%= link_to 'Editar', edit_pago_cheque_path(@pago_cheque) %> |
-<%= link_to 'Atras', @pago_cheque.factura_credito %>
+<%= link_to 'Ver Factura', @pago_cheque.factura_credito %>

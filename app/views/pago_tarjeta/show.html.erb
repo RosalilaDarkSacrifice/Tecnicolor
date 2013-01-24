@@ -9,7 +9,7 @@
   <b>Fecha:</b>
   <%= @pago_tarjetum.fecha %>
 </p>
-
+<!--
 <p>
   <b>Numero:</b>
   <%= @pago_tarjetum.numero %>
@@ -19,7 +19,7 @@
   <b>Anulada:</b>
   <%= @pago_tarjetum.anulada %>
 </p>
-
+-->
 <p>
   <b>Monto:</b>
   <%= @pago_tarjetum.monto %>
@@ -27,4 +27,4 @@
 
 
 <%= link_to 'Editar', edit_pago_tarjetum_path(@pago_tarjetum) %> |
-<%= link_to 'Atras', @pago_cheque.factura_credito %>
+<%= link_to 'Ver factura', @pago_tarjetum.factura_credito %>
