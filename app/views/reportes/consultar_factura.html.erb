@@ -1,5 +1,5 @@
 <div id="print-button">
-	<h1>Consultar factura</h1>
+	<h1>Consultar factura y pagos</h1>
 
 
 	<%= form_tag buscar_factura_path,remote: true do%>
@@ -127,6 +127,10 @@
 
 <br/>
 
+<h2 id="total_facturas">Total en facturas:</h2>
+<br/>
+<br/>
+
 <h2>Pagos en cheque</h2>
 
 <table id="tabla_pagos_cheque">
@@ -145,3 +149,5 @@
 
 <table id="tabla_pagos_tarjeta">
 </table>
+
+<h2 id="total_pagos">Totale en pagos</h2>

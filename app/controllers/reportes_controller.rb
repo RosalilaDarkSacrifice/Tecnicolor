@@ -68,6 +68,10 @@ class ReportesController < ApplicationController
 			@factura_creditos = FacturaCredito.find(:all,:conditions => ["numero = ? AND fecha = ?",params[:numero],anio+"-"+mes+"-"+dia])
 			@factura_cheques = FacturaCheque.find(:all,:conditions => ["numero = ? AND fecha = ?",params[:numero],anio+"-"+mes+"-"+dia])
 			@factura_tarjeta = FacturaTarjetum.find(:all,:conditions => ["numero = ? AND fecha = ?",params[:numero],anio+"-"+mes+"-"+dia])
+
+			@pagos_efectivo=PagoEfectivo.find(:all,:conditions => ["numero = ? AND fecha = ?",params[:numero],anio+"-"+mes+"-"+dia])
+			@pagos_cheque=PagoCheque.find(:all,:conditions => ["numero = ? AND fecha = ?",params[:numero],anio+"-"+mes+"-"+dia])
+			@pagos_tarjetum=PagoTarjetum.find(:all,:conditions => ["numero = ? AND fecha = ?",params[:numero],anio+"-"+mes+"-"+dia])
 		end
 
 		if (numero_lleno && !fecha_llena)
@@ -75,6 +79,10 @@ class ReportesController < ApplicationController
 			@factura_creditos = FacturaCredito.find(:all,:conditions => ["numero = ?",params[:numero]])
 			@factura_cheques = FacturaCheque.find(:all,:conditions => ["numero = ?",params[:numero]])
 			@factura_tarjeta = FacturaTarjetum.find(:all,:conditions => ["numero = ?",params[:numero]])
+
+			@pagos_efectivo=PagoEfectivo.find(:all,:conditions => ["numero = ?",params[:numero]])
+			@pagos_cheque=PagoCheque.find(:all,:conditions => ["numero = ?",params[:numero]])
+			@pagos_tarjetum=PagoTarjetum.find(:all,:conditions => ["numero = ?",params[:numero]])
 		end
 
 		if (!numero_lleno && fecha_llena)

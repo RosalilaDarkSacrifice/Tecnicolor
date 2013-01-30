@@ -11,6 +11,7 @@ $('#tabla_cheques').append("<tr>"+
     "<th></th>"+
   "</tr>");
 
+<%total_facturas=0%>
 <%total=0%>
 <%@factura_cheques.each do |p|%>
 	$('#tabla_cheques').append("<tr>"+
@@ -36,7 +37,7 @@ $('#tabla_cheques').append("<tr>"+
 		            "<td></td>"+
 		            "</tr>");
 
-
+<%total_facturas+=total%>
 
 
 
@@ -75,7 +76,7 @@ $('#tabla_creditos').append("<tr>"+
 		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
-
+<%total_facturas+=total%>
 
 
 
@@ -118,7 +119,7 @@ $('#tabla_efectivos').append("<tr>"+
 		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
-
+<%total_facturas+=total%>
 
 
 
@@ -162,7 +163,9 @@ $('#tabla_tarjeta').append("<tr>"+
 		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
+<%total_facturas+=total%>
 
+$('#total_facturas').text("Total en facturas: <%=total_facturas%>");
 
 
 
@@ -187,6 +190,7 @@ $('#tabla_pagos_cheque').append("<tr>"+
     "<th></th>"+
   "</tr>");
 
+<%total_pagos=0%>
 <%total=0%>
 <%@pagos_cheque.each do |p|%>
 	$('#tabla_pagos_cheque').append("<tr>"+
@@ -214,11 +218,12 @@ $('#tabla_pagos_cheque').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
 		            "<td></td>"+
+		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
 		            "<td><b><%=total%></b></td>"+
 		            "<td></td>"+
 		            "</tr>");
-
+<%total_pagos+=total%>
 
 
 
@@ -263,11 +268,12 @@ $('#tabla_pagos_efectivo').append("<tr>"+
 $('#tabla_pagos_efectivo').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
+		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
 		            "<td><b><%=total%></b></td>"+
 		            "<td></td>"+
 		            "</tr>");
-
+<%total_pagos+=total%>
 
 
 
@@ -312,7 +318,11 @@ $('#tabla_pagos_tarjeta').append("<tr>"+
 $('#tabla_pagos_tarjeta').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
+		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
 		            "<td><b><%=total%></b></td>"+
 		            "<td></td>"+
 		            "</tr>");
+<%total_pagos+=total%>
+
+$('#total_pagos').text("Total en pagos: <%=total_pagos%>");

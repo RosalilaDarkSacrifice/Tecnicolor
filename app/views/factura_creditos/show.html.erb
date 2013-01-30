@@ -149,7 +149,11 @@
 
 <% @factura_credito.producto_factura_creditos.each do |producto_factura_credito| %>
   <tr>
-    <td><%= producto_factura_credito.producto.nombre+ " - "+ producto_factura_credito.producto.descripcion %></td>
+		<% if producto_factura_credito.producto!=nil %>
+		  <td><%= producto_factura_credito.producto.nombre+ " - "+ producto_factura_credito.producto.descripcion %></td>
+		<% else %>
+			<td>producto modificado</td>
+		<% end %>
     <td><%= producto_factura_credito.cantidad %></td>
     <td><%= producto_factura_credito.precio %></td>
 		<% if producto_factura_credito.cantidad != nil && producto_factura_credito.precio != nil%>

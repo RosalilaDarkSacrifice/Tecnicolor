@@ -5,6 +5,7 @@
     <th>Fecha</th>
     <th>Producto</th>
     <th>Descripcion</th>
+    <th>Categoria</th>
     <th>Proveedor</th>
     <th>Cantidad</th>
     <th></th>
@@ -25,6 +26,12 @@
 		<td>
 		<%if entrada_producto.producto != nil%>
     	<%= entrada_producto.producto.descripcion %>
+		<%end%>
+		</td>
+
+		<td>
+		<%if entrada_producto.producto != nil%>
+    	<%= entrada_producto.producto.categorium.nombre %>
 		<%end%>
 		</td>
 

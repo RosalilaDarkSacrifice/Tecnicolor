@@ -11,8 +11,6 @@
     </div>
   <% end %>
 
-	<h2>Numero <%=sigNumPago%><h2>
-
   <div class="field" style="display:none">
     <%= f.label :factura_credito_id %><br />
     <%= f.number_field :factura_credito_id, :value => params[:id] %>
@@ -21,11 +19,12 @@
     <%= f.label :fecha %><br />
     <%= f.date_select :fecha %>
   </div>
-<!--
+
   <div class="field">
     <%= f.label :numero %><br />
     <%= f.number_field :numero %>
   </div>
+<!--
   <div class="field">
     <%= f.label :anulada %><br />
     <%= f.check_box :anulada %>

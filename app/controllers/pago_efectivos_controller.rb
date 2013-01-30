@@ -41,7 +41,6 @@ class PagoEfectivosController < ApplicationController
   # POST /pago_efectivos.json
   def create
     @pago_efectivo = PagoEfectivo.new(params[:pago_efectivo])
-		@pago_efectivo.numero=sigNumPago
 
     respond_to do |format|
       if @pago_efectivo.save

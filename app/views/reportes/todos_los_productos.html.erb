@@ -6,7 +6,6 @@
     <th>Categoria</th>
     <th>Precio maximo</th>
     <th>Precio minimo</th>
-    <th>Existencias</th>
     <th></th>
     <th></th>
     <th></th>
@@ -26,7 +25,6 @@
 		</td>
     <td><%= producto.precio_maximo %></td>
     <td><%= producto.precio_minimo %></td>
-    <td><%= producto.existencias %></td>
     <td><%= link_to 'Mostrar', producto %></td>
     <td><%= link_to 'Editar', edit_producto_path(producto) %></td>
     <td><%= link_to 'Borrar', producto, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>

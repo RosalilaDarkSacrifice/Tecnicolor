@@ -5,14 +5,40 @@
     <th>Descripcion</th>
     <th>Categoria</th>
     <th>Existencias</th>
+    <th>Monto maximo</th>
+    <th>Monto minimo</th>
+    <th>Monto costo</th>
   </tr>
-
+<%total_maximo=0%>
+<%total_minimo=0%>
+<%total_costo=0%>
 <% @productos.each do |producto| %>
   <tr>
     <td><%= producto.nombre %></td>
     <td><%= producto.descripcion %></td>
     <td><%= producto.categorium.nombre %></td>
     <td><%= producto.existencias %></td>
+		<%if producto.precio_maximo!=nil%>
+	    <td><%= (producto.existencias*producto.precio_maximo*100.0).round/100.0 %></td>
+			<%total_maximo+=(producto.existencias*producto.precio_maximo*100.0).round/100.0%>
+		<%end%>
+		<%if producto.precio_minimo!=nil%>
+	    <td><%= (producto.existencias*producto.precio_minimo*100.0).round/100.0 %></td>
+			<%total_minimo+=(producto.existencias*producto.precio_minimo*100.0).round/100.0%>
+		<%end%>
+		<%if producto.precio_costo!=nil%>
+	    <td><%= (producto.existencias*producto.precio_costo*100.0).round/100.0 %></td>
+			<%total_costo+=(producto.existencias*producto.precio_costo*100.0).round/100.0%>
+		<%end%>
   </tr>
 <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><b>Total</b></td>
+    <td><b><%= (total_maximo*100.0).round/100.0 %></b></td>
+    <td><b><%= (total_minimo*100.0).round/100.0 %></b></td>
+    <td><b><%= (total_costo*100.0).round/100.0 %></b></td>
+  </tr>
 </table>
