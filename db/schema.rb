@@ -11,17 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116194123) do
+ActiveRecord::Schema.define(:version => 20130409183351) do
 
-  create_table "categoria", :force => true do |t|
-    t.string   "nombre"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "tipo_reporte"
-    t.decimal  "entradas"
-    t.decimal  "salidas"
-    t.decimal  "ventas"
-  end
+# Could not dump table "categoria" because of following StandardError
+#   Unknown type 'iteger' for column 'densidad'
 
   create_table "cliente_creditos", :force => true do |t|
     t.string   "nombre"

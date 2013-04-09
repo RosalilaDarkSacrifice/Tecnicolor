@@ -117,6 +117,43 @@ class ReportesController < ApplicationController
 		end
 	end
 
+	def buscar_factura_por_rango
+
+		anio_inicio=params[:anio]
+		mes_inicio=params[:mes]
+		dia_inicio=params[:dia]
+
+		anio_final=params[:anio_final]
+		mes_final=params[:mes_final]
+		dia_final=params[:dia_final]
+
+		@anio_inicio=anio_inicio
+		@mes_inicio=mes_inicio
+		@dia_inicio=dia_inicio
+
+		@anio_final=anio_final
+		@mes_final=mes_final
+		@dia_final=dia_final
+
+		fecha_llena	=	anio_inicio!="---" && mes_inicio!="---" && dia_inicio!="---"
+
+		if (fecha_llena)
+			str = " fecha BETWEEN '" + anio_inicio + "-" + mes_inicio + "-" + dia_inicio + "' and '" + anio_final + "-" + mes_final + "-" + dia_final + "'"
+			@factura_efectivos = FacturaEfectivo.where(" fecha BETWEEN '" + anio_inicio + "-" + mes_inicio + "-" + dia_inicio + "' and '" + anio_final + "-" + mes_final + "-" + dia_final + "'")
+			@factura_creditos = FacturaCredito.where(" fecha BETWEEN '" + anio_inicio + "-" + mes_inicio + "-" + dia_inicio + "' and '" + anio_final + "-" + mes_final + "-" + dia_final + "'")
+			@factura_cheques = FacturaCheque.where(" fecha BETWEEN '" + anio_inicio + "-" + mes_inicio + "-" + dia_inicio + "' and '" + anio_final + "-" + mes_final + "-" + dia_final + "'")
+			@factura_tarjeta = FacturaTarjetum.where(" fecha BETWEEN '" + anio_inicio + "-" + mes_inicio + "-" + dia_inicio + "' and '" + anio_final + "-" + mes_final + "-" + dia_final + "'")
+
+			@pagos_efectivo = PagoEfectivo.where(" fecha BETWEEN '" + anio_inicio + "-" + mes_inicio + "-" + dia_inicio + "' and '" + anio_final + "-" + mes_final + "-" + dia_final + "'")
+			@pagos_cheque = PagoCheque.where(" fecha BETWEEN '" + anio_inicio + "-" + mes_inicio + "-" + dia_inicio + "' and '" + anio_final + "-" + mes_final + "-" + dia_final + "'")
+			@pagos_tarjetum = PagoTarjetum.where(" fecha BETWEEN '" + anio_inicio + "-" + mes_inicio + "-" + dia_inicio + "' and '" + anio_final + "-" + mes_final + "-" + dia_final + "'")
+		end
+
+    respond_to do |format|
+			format.js
+		end
+	end
+
 	def cuentas_por_cobrar
 		@cuentas_por_cobrar=FacturaCredito.all
 	end

@@ -7,7 +7,9 @@
     <!--<th>Transferencias internas</th>-->
     <th><%= link_to "Salidas", "/salida_producto_mal_estados" %></th>
     <th><%= link_to "Ventas", "/consultar_factura" %></th>
-    <th>Existencias</th>
+    <th>Existencias (galones)</th>
+    <th>Densidad (gramos/galon)</th>
+    <th>Existencias (gramos)</th>
   </tr>
 
 <%i=0%>
@@ -18,6 +20,12 @@
     <td><%= categorium.salidas %></td>
     <td><%= categorium.ventas %></td>
     <td><%= categorium.entradas-categorium.salidas-categorium.ventas %></td>
+		<td><%= categorium.densidad %></td>
+		<%if categorium.densidad!=nil %>
+	    <td><%= categorium.densidad*(categorium.entradas-categorium.salidas-categorium.ventas) %></td>
+		<%else%>
+	    <td><%= 0 %></td>
+		<%end%>
   </tr>
 <%i+=1%>
 <% end %>

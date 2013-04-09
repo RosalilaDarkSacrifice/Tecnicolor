@@ -1,0 +1,328 @@
+$('#fecha').text("Fecha: desde el <%=@anio_inicio+"-"+@mes_inicio+"-"+@dia_inicio%> hasta el <%=@anio_final+"-"+@mes_final+"-"+@dia_final%>");
+
+$('#tabla_cheques tr').remove();
+
+$('#tabla_cheques').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total_facturas=0%>
+<%total=0%>
+<%@factura_cheques.each do |p|%>
+	$('#tabla_cheques').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.cliente%></td>"+
+									<% if p.anulada %>
+										"<td>Anulada</td>"+
+									<% else %>
+				            "<td><%=p.getTotal.ceil%>.00</td>"+
+									<% end %>
+			            "<td><a href=\"/factura_cheques/<%=p.id%>\">Mostrar</a></td>"+
+			            "</tr>");
+	<% if !p.anulada %>
+		<%total+=p.getTotal.ceil%>
+	<% end %>
+<%end%>
+$('#tabla_cheques').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+
+<%total_facturas+=total%>
+
+
+
+$('#tabla_creditos tr').remove();
+
+$('#tabla_creditos').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total=0%>
+<%@factura_creditos.each do |p|%>
+	$('#tabla_creditos').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+	
+			            "<td><%=p.cliente_credito.nombre%></td>"+
+									<% if p.anulada %>
+										"<td>Anulada</td>"+
+									<% else %>
+				            "<td><%=p.getTotal.ceil%>.00</td>"+
+									<% end %>
+			            "<td><a href=\"/factura_creditos/<%=p.id%>\">Mostrar</a></td>"+
+			            "</tr>");
+	<% if !p.anulada %>
+		<%total+=p.getTotal.ceil%>
+	<% end %>
+<%end%>
+$('#tabla_creditos').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_facturas+=total%>
+
+
+
+
+
+
+
+$('#tabla_efectivos tr').remove();
+
+$('#tabla_efectivos').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total=0%>
+<%@factura_efectivos.each do |p|%>
+	$('#tabla_efectivos').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.cliente%></td>"+
+									<% if p.anulada %>
+										"<td>Anulada</td>"+
+									<% else %>
+				            "<td><%=p.getTotal.ceil%>.00</td>"+
+									<% end %>
+			            "<td><a href=\"/factura_efectivos/<%=p.id%>\">Mostrar</a></td>"+
+			            "</tr>");
+	<% if !p.anulada %>
+		<%total+=p.getTotal.ceil%>
+	<% end %>
+<%end%>
+$('#tabla_efectivos').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_facturas+=total%>
+
+
+
+
+
+
+
+
+$('#tabla_tarjeta tr').remove();
+
+$('#tabla_tarjeta').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total=0%>
+<%@factura_tarjeta.each do |p|%>
+	$('#tabla_tarjeta').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.cliente%></td>"+
+									<% if p.anulada %>
+										"<td>Anulada</td>"+
+									<% else %>
+				            "<td><%=p.getTotal.ceil%>.00</td>"+
+									<% end %>
+			            "<td><a href=\"/factura_tarjeta/<%=p.id%>\">Mostrar</a></td>"+
+			            "</tr>");
+	<% if !p.anulada %>
+		<%total+=p.getTotal.ceil%>
+	<% end %>
+<%end%>
+$('#tabla_tarjeta').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_facturas+=total%>
+
+$('#total_facturas').text("Total en facturas: <%=total_facturas%>");
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_cheque tr').remove();
+
+$('#tabla_pagos_cheque').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Pago</th>"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>#Cheque</th>"+
+    "<th>Banco</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total_pagos=0%>
+<%total=0%>
+<%@pagos_cheque.each do |p|%>
+	$('#tabla_pagos_cheque').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.factura_credito.numero%></td>"+
+			            "<td><%=p.factura_credito.cliente_credito.nombre%></td>"+
+			            "<td><%=p.numero_cheque%></td>"+
+			            "<td><%=p.banco%></td>"+
+									<% if p.factura_credito.anulada != true %>
+										<% if p.anulada!=true %>
+					            "<td><%=p.monto%></td>"+
+											<%total+=p.monto%>
+										<% else %>
+					            "<td>pago anulado</td>"+
+										<% end %>
+									<% else %>
+				            "<td>Factura anulada</td>"+
+									<% end %>
+			            "</tr>");
+<%end%>
+
+$('#tabla_pagos_cheque').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%></b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_pagos+=total%>
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_efectivo tr').remove();
+
+$('#tabla_pagos_efectivo').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Pago</th>"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total=0%>
+<%@pagos_efectivo.each do |p|%>
+	$('#tabla_pagos_efectivo').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.factura_credito.numero%></td>"+
+			            "<td><%=p.factura_credito.cliente_credito.nombre%></td>"+
+									<% if p.factura_credito.anulada != true %>
+										<% if p.anulada!=true %>
+					            "<td><%=p.monto%></td>"+
+											<%total+=p.monto%>
+										<% else %>
+					            "<td>pago anulado</td>"+
+										<% end %>
+									<% else %>
+				            "<td>Factura anulada</td>"+
+									<% end %>
+			            "</tr>");
+<%end%>
+$('#tabla_pagos_efectivo').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%></b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_pagos+=total%>
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_tarjeta tr').remove();
+
+$('#tabla_pagos_tarjeta').append("<tr>"+
+    "<th>Fecha</th>	"+
+    "<th>#Pago</th>"+
+    "<th>#Factura</th>"+
+    "<th>Cliente</th>"+
+    "<th>Monto</th>"+
+    "<th></th>"+
+    "<th></th>"+
+  "</tr>");
+
+<%total=0%>
+<%@pagos_tarjetum.each do |p|%>
+	$('#tabla_pagos_tarjeta').append("<tr>"+
+			            "<td><%=p.fecha%></td>"+
+			            "<td><%=p.numero%></td>"+
+			            "<td><%=p.factura_credito.numero%></td>"+
+			            "<td><%=p.factura_credito.cliente_credito.nombre%></td>"+
+									<% if p.factura_credito.anulada != true %>
+										<% if p.anulada!=true %>
+					            "<td><%=p.monto%></td>"+
+											<%total+=p.monto%>
+										<% else %>
+					            "<td>pago anulado</td>"+
+										<% end %>
+									<% else %>
+				            "<td>Factura anulada</td>"+
+									<% end %>
+			            "</tr>");
+<%end%>
+$('#tabla_pagos_tarjeta').append("<tr>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td></td>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%></b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_pagos+=total%>
+
+$('#total_pagos').text("Total en pagos: <%=total_pagos%>");

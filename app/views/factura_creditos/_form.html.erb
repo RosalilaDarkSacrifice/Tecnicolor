@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :cliente_credito_id %><br />
-    <%= f.collection_select :cliente_credito_id, ClienteCredito.all, :id, :nombre %>
+    <%= f.collection_select :cliente_credito_id, ClienteCredito.all, :id, :getNombreYSaldo %>
   </div>
   <div class="field">
     <%= f.label :estado %><br />

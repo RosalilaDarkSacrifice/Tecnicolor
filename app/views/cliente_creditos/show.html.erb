@@ -74,7 +74,9 @@
     <th></th>
   </tr>
 
-
+<%total_pendiente = 0%>
+<%pagos_pendiente = 0%>
+<%saldo_pendiente = 0%>
 <% @cliente_credito.factura_creditos.each do |factura_credito| %>
 	<% if factura_credito.getSaldo > 0 %>
 		<tr>
@@ -86,6 +88,9 @@
 		  	<td>si</td>
 			<% else %>
 		  	<td>no</td>
+				<%total_pendiente += factura_credito.getTotal%>
+				<%pagos_pendiente += factura_credito.getTotalPagos%>
+				<%saldo_pendiente += factura_credito.getSaldo%>
 			<% end %>
 		  <td><%= factura_credito.getTotal %></td>
 		  <td><%= factura_credito.getTotalPagos %></td>
@@ -95,6 +100,20 @@
 		</tr>
 	<% end %>
 <% end %>
+
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th><b>Totales:</b></th>
+    <th><b><%=total_pendiente%></b></th>
+    <th><b><%=pagos_pendiente%></b></th>
+    <th><b><%=saldo_pendiente%></b></th>
+    <th></th>
+    <th></th>
+  </tr>
+
 </table>
 
 <h2>Facturas pagadas</h2>
@@ -113,7 +132,9 @@
     <th></th>
   </tr>
 
-
+<%total_pagadas = 0%>
+<%pagos_pagadas = 0%>
+<%saldo_pagadas = 0%>
 <% @cliente_credito.factura_creditos.each do |factura_credito| %>
 	<% if factura_credito.getSaldo <= 0 %>
 		<tr>
@@ -125,6 +146,9 @@
 		  	<td>si</td>
 			<% else %>
 		  	<td>no</td>
+				<%total_pagadas += factura_credito.getTotal%>
+				<%pagos_pagadas += factura_credito.getTotalPagos%>
+				<%saldo_pagadas += factura_credito.getSaldo%>
 			<% end %>
 		  <td><%= factura_credito.getTotal %></td>
 		  <td><%= factura_credito.getTotalPagos %></td>
@@ -134,4 +158,18 @@
 		</tr>
 	<% end %>
 <% end %>
+
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th><b>Totales:</b></th>
+    <th><b><%=total_pagadas%></b></th>
+    <th><b><%=pagos_pagadas%></b></th>
+    <th><b><%=saldo_pagadas%></b></th>
+    <th></th>
+    <th></th>
+  </tr>
+
 </table>

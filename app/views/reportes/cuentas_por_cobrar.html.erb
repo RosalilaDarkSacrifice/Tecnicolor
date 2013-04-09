@@ -1,3 +1,7 @@
+<div id="print-button">
+		<a style="font-size:20pt;line-height:25pt;" href="javascript:window.print()">Imprimir</a>
+</div>
+
 <h1>Cuentas por cobrar</h1>
 
 <table>
@@ -12,6 +16,9 @@
     <th></th>
   </tr>
 
+<%total=0%>
+<%pagos=0%>
+<%saldo=0%>
 <% @cuentas_por_cobrar.each do |factura_credito| %>
 <% if (factura_credito.getSaldo > 0) && factura_credito.anulada!=true%>
   <tr>
@@ -25,6 +32,20 @@
     <td><%= link_to 'Mostrar', factura_credito %></td>
     <td><%= link_to 'Editar', edit_factura_credito_path(factura_credito) %></td>
   </tr>
+	<%total+=factura_credito.getTotal.ceil%>
+	<%pagos+=factura_credito.getTotalPagos%>
+	<%saldo+=factura_credito.getSaldo%>
 <% end %>
 <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><b>Totales</b></td>
+		<td><b><%= total %></b></td>
+		<td><b><%= pagos %></b></td>
+		<td><b><%= saldo %></b></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>

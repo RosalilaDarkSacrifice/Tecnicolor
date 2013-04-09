@@ -18,7 +18,7 @@ class FacturaCredito < ActiveRecord::Base
 	end
 
 	def getTotal
-		return (getSubtotal*100*1.12).round/100.0
+		return ((getSubtotal*100*1.12).round/100.0).ceil*1.0
 	end
 
 	def getISV
@@ -46,7 +46,7 @@ class FacturaCredito < ActiveRecord::Base
 				res+=p.monto
 			end
 		end
-		return res
+		return (res*100.0).round/100.0
 	end
 
 	def getSaldo
