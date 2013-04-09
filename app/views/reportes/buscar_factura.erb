@@ -202,8 +202,8 @@ $('#tabla_pagos_cheque').append("<tr>"+
 			            "<td><%=p.banco%></td>"+
 									<% if p.factura_credito.anulada != true %>
 										<% if p.anulada!=true %>
-					            "<td><%=p.monto%></td>"+
-											<%total+=p.monto%>
+					            "<td><%=p.monto.ceil%>.00</td>"+
+											<%total+=p.monto.ceil%>
 										<% else %>
 					            "<td>pago anulado</td>"+
 										<% end %>
@@ -220,7 +220,7 @@ $('#tabla_pagos_cheque').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
-		            "<td><b><%=total%></b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
 <%total_pagos+=total%>
@@ -255,8 +255,8 @@ $('#tabla_pagos_efectivo').append("<tr>"+
 			            "<td><%=p.factura_credito.cliente_credito.nombre%></td>"+
 									<% if p.factura_credito.anulada != true %>
 										<% if p.anulada!=true %>
-					            "<td><%=p.monto%></td>"+
-											<%total+=p.monto%>
+					            "<td><%=p.monto.ceil%>.00</td>"+
+											<%total+=p.monto.ceil%>
 										<% else %>
 					            "<td>pago anulado</td>"+
 										<% end %>
@@ -270,7 +270,7 @@ $('#tabla_pagos_efectivo').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
-		            "<td><b><%=total%></b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
 <%total_pagos+=total%>
@@ -305,8 +305,8 @@ $('#tabla_pagos_tarjeta').append("<tr>"+
 			            "<td><%=p.factura_credito.cliente_credito.nombre%></td>"+
 									<% if p.factura_credito.anulada != true %>
 										<% if p.anulada!=true %>
-					            "<td><%=p.monto%></td>"+
-											<%total+=p.monto%>
+					            "<td><%=p.monto.ceil%>.00</td>"+
+											<%total+=p.monto.ceil%>
 										<% else %>
 					            "<td>pago anulado</td>"+
 										<% end %>
@@ -320,7 +320,7 @@ $('#tabla_pagos_tarjeta').append("<tr>"+
 		            "<td></td>"+
 		            "<td></td>"+
 		            "<td><b>Total</b></td>"+
-		            "<td><b><%=total%></b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
 		            "<td></td>"+
 		            "</tr>");
 <%total_pagos+=total%>

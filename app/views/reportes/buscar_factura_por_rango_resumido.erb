@@ -1,0 +1,161 @@
+$('#fecha').text("Fecha: desde el <%=@anio_inicio+"-"+@mes_inicio+"-"+@dia_inicio%> hasta el <%=@anio_final+"-"+@mes_final+"-"+@dia_final%>");
+
+$('#tabla_cheques tr').remove();
+
+<%total_facturas=0%>
+<%total=0%>
+<%@factura_cheques.each do |p|%>
+	<% if !p.anulada %>
+		<%total+=p.getTotal.ceil%>
+	<% end %>
+<%end%>
+$('#tabla_cheques').append("<tr>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+
+<%total_facturas+=total%>
+
+
+
+$('#tabla_creditos tr').remove();
+
+<%total=0%>
+<%@factura_creditos.each do |p|%>
+	<% if !p.anulada %>
+		<%total+=p.getTotal.ceil%>
+	<% end %>
+<%end%>
+$('#tabla_creditos').append("<tr>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_facturas+=total%>
+
+
+
+
+
+
+
+$('#tabla_efectivos tr').remove();
+
+<%total=0%>
+<%@factura_efectivos.each do |p|%>
+	<% if !p.anulada %>
+		<%total+=p.getTotal.ceil%>
+	<% end %>
+<%end%>
+$('#tabla_efectivos').append("<tr>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_facturas+=total%>
+
+
+
+
+
+
+
+
+$('#tabla_tarjeta tr').remove();
+
+<%total=0%>
+<%@factura_tarjeta.each do |p|%>
+	<% if !p.anulada %>
+		<%total+=p.getTotal.ceil%>
+	<% end %>
+<%end%>
+$('#tabla_tarjeta').append("<tr>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_facturas+=total%>
+
+$('#total_facturas').text("Total en facturas: <%=total_facturas%>");
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_cheque tr').remove();
+<%total_pagos=0%>
+<%total=0%>
+<%@pagos_cheque.each do |p|%>
+	<% if p.factura_credito.anulada != true %>
+		<% if p.anulada!=true %>
+			<%total+=p.monto.ceil%>
+		<% end %>
+	<% end %>
+<%end%>
+
+$('#tabla_pagos_cheque').append("<tr>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_pagos+=total%>
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_efectivo tr').remove();
+
+<%total=0%>
+<%@pagos_efectivo.each do |p|%>
+	<% if p.factura_credito.anulada != true %>
+		<% if p.anulada!=true %>
+			<%total+=p.monto.ceil%>
+		<% end %>
+	<% end %>
+<%end%>
+$('#tabla_pagos_efectivo').append("<tr>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_pagos+=total%>
+
+
+
+
+
+
+
+
+
+
+$('#tabla_pagos_tarjeta tr').remove();
+
+	<%total=0%>
+	<%@pagos_tarjetum.each do |p|%>
+		<% if p.factura_credito.anulada != true %>
+			<% if p.anulada!=true %>
+				<%total+=p.monto.ceil%>
+			<% end %>
+		<% end %>
+	<%end%>
+$('#tabla_pagos_tarjeta').append("<tr>"+
+		            "<td><b>Total</b></td>"+
+		            "<td><b><%=total%>.00</b></td>"+
+		            "<td></td>"+
+		            "</tr>");
+<%total_pagos+=total%>
+
+$('#total_pagos').text("Total en pagos: <%=total_pagos%>");
