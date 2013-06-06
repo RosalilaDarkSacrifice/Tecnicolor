@@ -196,7 +196,7 @@ class ReportesController < ApplicationController
 	end
 
 	def reporte_galones
-		@categoria=Categorium.where(:tipo_reporte=>"galon")
+		@categoria=Categorium.where(:tipo_reporte=>"galon densidad")
 	end
 
 	def reporte_unitario

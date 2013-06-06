@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-<% if @categorium.tipo_reporte=="galon" %>
+<% if @categorium.tipo_reporte=="galon densidad" %>
   <div class="field">
     <%= f.label :nombre %><br />
     <%= f.text_field :nombre %>
@@ -34,7 +34,7 @@
 <% end %>
   <div class="field">
     <%= f.label :tipo_reporte %><br />
-    <%= f.select :tipo_reporte, ["unitario","galon"] %>
+    <%= f.select :tipo_reporte, ["unitario","galon densidad"] %>
   </div>
   <div class="actions">
     <%= f.submit "finalizar"%>
